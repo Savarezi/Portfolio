@@ -1,0 +1,184 @@
+
+/* styles.css */
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* CORPO DA PÁGINA */
+body {
+    background-color: #121212;
+    color:wheat;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background-color: #1e1e1e;
+    padding: 20px 0;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LOGO */
+.logo img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+/* NAVIGATION */
+.menu {
+    text-align: right;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* TOPO DO SITE */
+.topo-do-site {
+    text-align: center;
+    padding: 50px 0;
+    background-color:dark blue ;
+}
+
+/* ESPECIALIDADES */
+.especialidades {
+    background-color:green;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.skills {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.skill-box {
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* SOBRE */
+.sobre {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.btn-social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-social button {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-social button:hover {
+    background-color: paleturquoise;
+}
+
+/* PORTFÓLIO */
+.portifolio {
+    padding: 40px 0;
+}
+
+.projects {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.project-box {
+    background-color: #282828;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.project-box a {
+    color: fuchsia;
+    text-decoration: none;
+}
+
+.project-box a:hover {
+    text-decoration: underline;
+}
+
+/* FORMULÁRIO */
+.formulario {
+    padding: 40px 0;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+input, textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333333;
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+button {
+    background-color: purple;
+    color: whitesmoke;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #007acc;
+}
+
+/* FOOTER */
+footer {
+    background-color:green;
+    padding: 20px 0;
+    text-align: center;
+}
