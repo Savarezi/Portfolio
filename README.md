@@ -28,16 +28,6 @@ Este é um portfólio totalmente responsivo criado com HTML, CSS e JavaScript. E
 * Formspree ✉️
 ##
 ##
-
-# 🖼️ Destaques do Projeto
-
-1-Cabeçalho Responsivo: Com um menu de navegação estiloso e minha foto como logo.
-
-2-Seção de Habilidades: Minhas principais competências, como programação e análise de dados.
-
-3-Projetos: Links diretos para os projetos que mais tenho orgulho!
-
-4-Formulário de Contato: Um formulário simples para facilitar a comunicação.
 ##
 # 🌟 Meus Projetos
 
