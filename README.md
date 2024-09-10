@@ -1,8 +1,9 @@
 
- # Aqui está um README animado e divertido para o seu projeto de portfólio! 🌟
 
-🚀 Portfólio de Patrícia Oliveira 🚀
-Bem-vindo ao meu portfólio! Aqui você pode conhecer um pouco mais sobre mim, minhas habilidades e os projetos que venho desenvolvendo com muita dedicação. 💻✨
+
+# 🚀 Portfólio de Patrícia Oliveira 🚀
+
+# Bem-vindo ao meu portfólio! Aqui você pode conhecer um pouco mais sobre mim, minhas habilidades e os projetos que venho desenvolvendo com muita dedicação. 💻✨
 ##
 # 🎨 Visão Geral
 Este é um portfólio totalmente responsivo criado com HTML, CSS e JavaScript. Ele foi projetado para ser visualmente agradável, fácil de navegar e totalmente acessível em dispositivos móveis. 📱
