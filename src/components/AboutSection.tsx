@@ -100,6 +100,16 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedCv, setGeneratedCv] = useState('');
   const [copied, setCopied] = useState(false);
+  const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
+
+  useEffect(() => {
+    if (notification) {
+      const timer = setTimeout(() => {
+        setNotification(null);
+      }, 8000);
+      return () => clearTimeout(timer);
+    }
+  }, [notification]);
 
   const stats = [
     { value: '+8', label: 'Projetos e Aplicações', desc: 'Integrações em IA, Finanças e SaaS', icon: Code },
@@ -180,12 +190,22 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
       if (successful) {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
+        setNotification({
+          message: "Currículo copiado para a área de transferência com sucesso!",
+          type: "success"
+        });
       } else {
-        alert("Não foi possível copiar automaticamente devido às restrições do navegador na visualização. Por favor, selecione e copie o texto abaixo manualmente.");
+        setNotification({
+          message: "Não foi possível copiar automaticamente devido às restrições do navegador na visualização. Por favor, selecione e copie o texto abaixo manualmente com Ctrl+C.",
+          type: "info"
+        });
       }
     } catch (fallbackError) {
       console.error("Fallback copy failed:", fallbackError);
-      alert("Não foi possível copiar automaticamente devido a restrições de sandbox. Por favor, selecione o texto abaixo manualmente.");
+      setNotification({
+        message: "Não foi possível copiar automaticamente devido a restrições de sandbox. Por favor, selecione o texto abaixo manualmente e copie com Ctrl+C.",
+        type: "error"
+      });
     }
   };
 
@@ -197,6 +217,10 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
           .then(() => {
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
+            setNotification({
+              message: "Concluído: Currículo copiado para a área de transferência com sucesso!",
+              type: "success"
+            });
           })
           .catch((err) => {
             console.warn("navigator.clipboard failed, running fallback copy:", err);
@@ -221,9 +245,15 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
       // Copy text since downloads are typically blocked in sandboxed iframes
       try {
         runFallbackCopy();
-        alert("Atenção: Como você está na área de visualização do editor, o navegador bloqueia downloads de arquivos por segurança. O currículo gerado foi copiado automaticamente para a sua área de transferência com sucesso! Você também pode abrir o portfólio em uma aba cheia para baixar o arquivo .md diretamente.");
+        setNotification({
+          message: "O download de arquivos é bloqueado no editor de visualização por segurança. Copiamos o seu currículo para a área de transferência (Ctrl+V)!",
+          type: "info"
+        });
       } catch (e) {
-        alert("Por favor, selecione o texto abaixo e copie manualmente ou abra o portfólio em uma aba cheia para baixar o arquivo .md.");
+        setNotification({
+          message: "Como o download é indisponível na área de visualização, copie o texto manualmente no painel abaixo.",
+          type: "error"
+        });
       }
       return;
     }
@@ -236,11 +266,18 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
+      setNotification({
+        message: "Download iniciado! O arquivo 'curriculo_patricia_oliveira.md' está sendo baixado.",
+        type: "success"
+      });
     } catch (err) {
       console.error("Erro ao baixar:", err);
       // Fallback to copy and message
       runFallbackCopy();
-      alert("O download falhou devido a políticas de segurança do seu navegador. O texto foi copiado com sucesso para a sua área de transferência!");
+      setNotification({
+        message: "O download falhou devido a políticas de segurança do seu navegador. O texto foi copiado com sucesso para a área de transferência!",
+        type: "info"
+      });
     }
   };
 
@@ -455,6 +492,32 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
                     Fechar
                   </button>
                 </div>
+
+                {/* Custom Elegant Notification Banner */}
+                {notification && (
+                  <div className={`p-4 rounded-xl border text-xs flex items-start gap-3 transition-colors duration-300 ${
+                    notification.type === 'success' 
+                      ? 'bg-emerald-950/70 border-emerald-500/30 text-emerald-400' 
+                      : notification.type === 'error'
+                      ? 'bg-red-950/70 border-red-500/30 text-red-300'
+                      : 'bg-indigo-950/70 border-indigo-500/30 text-[#a5b4fc]'
+                  }`}>
+                    <div className="flex-1">
+                      <p className="font-medium font-sans leading-relaxed">
+                        <span className="font-bold mr-1">
+                          {notification.type === 'success' ? '✓' : notification.type === 'error' ? '⚠' : 'ℹ'}
+                        </span>
+                        {notification.message}
+                      </p>
+                    </div>
+                    <button 
+                      onClick={() => setNotification(null)}
+                      className="text-[10px] font-bold uppercase tracking-wider hover:text-white font-mono text-zinc-400 bg-zinc-900 px-2 py-1 rounded"
+                    >
+                      Fechar
+                    </button>
+                  </div>
+                )}
 
                 {/* Multi-column layout */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
