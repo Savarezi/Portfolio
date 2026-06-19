@@ -100,11 +100,11 @@ ${PATRICIA_CV_CONTEXT}
 Diretrizes de formatação e conteúdo:
 1. Ajuste a narrativa do Perfil Profissional, Resumo e Destaques de Habilidades de forma inteligente para satisfazer o que o usuário solicitou (${userPrompt}). Se ele descreveu uma vaga de emprego específica, realce as experiências de Patrícia que MAIS combinam com essa vaga.
 2. Estruture em seções de markdown elegantes:
-   - **Cabeçalho**: Nome Completo, Contatos Reais (Telefone: (11) 95806-0387, Email: patriciasavarezioliveira@gmail.com, Localidade: São Paulo - SP, links clicáveis do LinkedIn e GitHub).
+   - **Cabeçalho**: Nome Completo, Contatos Reais (Telefone: (11) 95806-0387, Email: patriciasavarezioliveira@gmail.com, Localidade: São Paulo - SP, links com a URL completa escrita explicitamente ex: LinkedIn: [https://www.linkedin.com/in/savarezi/](https://www.linkedin.com/in/savarezi/) | GitHub: [https://github.com/Savarezi](https://github.com/Savarezi)).
    - **Perfil Profissional**: Pequeno parágrafo profissional, centrado nos pontos fortes da vaga pretendida.
    - **Competências Técnicas**: Bullet points estruturados.
    - **Experiência Profissional**: Liste as experiências com dados, relacionamento e suporte dela, incluindo conquistas marcantes.
-   - **Projetos em Destaque**: Selecione os projetos práticos reais dela de maior relevância, indicando tecnologias e propósito de negócios.
+   - **Projetos em Destaque**: Selecione os projetos práticos reais dela de maior relevância, indicando a URL do GitHub completa escrita explicitamente ex: [https://github.com/Savarezi/...](https://github.com/Savarezi/...), estimulando a navegação de forma clara. Cadeia de entrega rítmica e real.
    - **Certificações e Educação**: Listados de forma categórica e limpa.
 3. NÃO invente experiências ou empresas em que ela não trabalhou, use estritamente as que estão listadas na fonte de verdade.
 4. Retorne APENAS o conteúdo em formato Markdown limpo e extremamente profissional. Não use tags adicionais ou comentários de IA fora do próprio currículo gerado.

@@ -146,6 +146,16 @@ export default function Sidebar({
           >
             <Github className="h-4.5 w-4.5" />
           </a>
+
+          {/* Theme switcher button */}
+          <button
+            onClick={toggleTheme}
+            id="theme-toggler-btn"
+            className="h-9 w-9 flex items-center justify-center rounded-lg bg-zinc-900 hover:bg-zinc-800 text-amber-500 dark:text-yellow-400 transition-colors cursor-pointer"
+            title={theme === 'dark' ? "Ativar Modo Claro" : "Ativar Modo Escuro"}
+          >
+            {theme === 'dark' ? <Sun className="h-4.5 w-4.5 text-amber-400" /> : <Moon className="h-4.5 w-4.5 text-slate-500" />}
+          </button>
           
           {/* Collapse Trigger Button inside sidebar footer matching Gustavo's Layout */}
           <button

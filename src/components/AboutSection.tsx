@@ -23,7 +23,7 @@ const FALLBACK_MARKDOWN_CV = `# PATRÍCIA OLIVEIRA
 **Analista de Dados, Desenvolvedora & Analista de Automação (Especialista em n8n)**
 
 📍 São Paulo - SP | 📞 (11) 95806-0387 | ✉️ [patriciasavarezioliveira@gmail.com](mailto:patriciasavarezioliveira@gmail.com)  
-🔗 [LinkedIn](https://www.linkedin.com/in/savarezi/) | 💻 [GitHub](https://github.com/Savarezi)
+🔗 LinkedIn: [https://www.linkedin.com/in/savarezi/](https://www.linkedin.com/in/savarezi/) | 💻 GitHub: [https://github.com/Savarezi](https://github.com/Savarezi)
 
 ---
 
@@ -65,16 +65,16 @@ Profissional altamente especializada na otimização de processos de negócios p
 
 ## PROJETOS EM DESTAQUE
 
-### **Mentoria Tech / Hub** — [*GitHub*](https://github.com/Savarezi/Mentoria-Tech)
+### **Mentoria Tech / Hub** — [https://github.com/Savarezi/Mentoria-Tech](https://github.com/Savarezi/Mentoria-Tech)
 * *Descrição*: Plataforma inteligente integrando Typebot e APIs de modelos de linguagem para orientação personalizada de trilhas de carreira e competências no mercado de TI.
 
-### **Macro Scenario Engine** — [*GitHub*](https://github.com/Savarezi/macro-scenario-engine)
+### **Macro Scenario Engine** — [https://github.com/Savarezi/macro-scenario-engine](https://github.com/Savarezi/macro-scenario-engine)
 * *Descrição*: Solução analítica com aplicação direta de Inteligência Artificial para leitura, tratamento e inferência de dados macroeconômicos aplicados à B3.
 
-### **Planej.ai** — [*GitHub*](https://github.com/Savarezi/PlanejAI)
+### **Planej.ai** — [https://github.com/Savarezi/PlanejAI](https://github.com/Savarezi/PlanejAI)
 * *Descrição*: Web application de planejamento financeiro pessoal baseado em regras estruturadas (50-30-20) com usabilidade e foco no usuário.
 
-### **VendaFácil SaaS** — [*GitHub*](https://github.com/Savarezi/VendaFacil)
+### **VendaFácil SaaS** — [https://github.com/Savarezi/VendaFacil](https://github.com/Savarezi/VendaFacil)
 * *Descrição*: Sistema SaaS consolidado em Dark Mode reunindo módulos corporativos integrados de estoque, automação de faturamento e relatórios financeiros unificados.
 
 ---
@@ -88,6 +88,63 @@ Profissional altamente especializada na otimização de processos de negócios p
 * **Excel para Análise de Dados** — *Preditiva Analytics (Nota Máxima: 10/10)*
 * **Fundamentos AWS (re/Start) & Cloud Practitioner** — *Amazon Web Services / DIO*
 `;
+
+interface TypewriterProps {
+  text: string;
+  speed?: number;
+  delay?: number;
+  className?: string;
+}
+
+function Typewriter({ text, speed = 15, delay = 0, className = "" }: TypewriterProps) {
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDone, setIsDone] = useState(false);
+
+  useEffect(() => {
+    setDisplayedText("");
+    setIsDone(false);
+
+    let timeoutId: any;
+    let idx = 0;
+    
+    const startTyping = () => {
+      const interval = setInterval(() => {
+        if (idx < text.length) {
+          setDisplayedText((prev) => prev + text.charAt(idx));
+          idx++;
+        } else {
+          clearInterval(interval);
+          setIsDone(true);
+        }
+      }, speed);
+      
+      return interval;
+    };
+
+    let intervalId: any;
+    if (delay > 0) {
+      timeoutId = setTimeout(() => {
+        intervalId = startTyping();
+      }, delay);
+    } else {
+      intervalId = startTyping();
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [text, speed, delay]);
+
+  return (
+    <span className={className}>
+      {displayedText}
+      {!isDone && (
+        <span className="inline-block w-[2px] h-[1em] ml-1 bg-purple-500 animate-pulse align-middle" />
+      )}
+    </span>
+  );
+}
 
 interface AboutSectionProps {
   onNavigateToProjects: () => void;
@@ -368,13 +425,13 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
             <h1 className="font-display font-bold text-3xl md:text-5xl text-white tracking-tight">
               {PERSONAL_INFO.name}
             </h1>
-            <p className="text-purple-400 font-medium text-sm md:text-base font-display">
-              {PERSONAL_INFO.title}
+            <p className="text-purple-400 font-medium text-sm md:text-base font-display min-h-[3rem] sm:min-h-[2rem] md:min-h-[1.75rem]">
+              <Typewriter text={PERSONAL_INFO.title} speed={15} delay={100} />
             </p>
           </div>
           
-          <p className="text-zinc-400 font-sans text-sm md:text-base leading-relaxed max-w-2xl">
-            {PERSONAL_INFO.bio}
+          <p className="text-zinc-400 font-sans text-sm md:text-base leading-relaxed max-w-2xl min-h-[8rem] sm:min-h-[6rem] md:min-h-[4.5rem]">
+            <Typewriter text={PERSONAL_INFO.bio} speed={8} delay={1400} />
           </p>
 
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
@@ -602,33 +659,7 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
                         )}
                       </span>
                       
-                      <div className="flex items-center gap-2">
-                        <button
-                           onClick={handleDownload}
-                           disabled={isGenerating || !generatedCv}
-                           className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-900 hover:bg-zinc-800 disabled:opacity-50 text-zinc-300 text-xs rounded-lg transition-colors font-medium border border-[#1e293b]"
-                           title="Baixar currículo formatado em Markdown (.md)"
-                        >
-                           <Download className="h-3.5 w-3.5 text-purple-400" />
-                           <span>Baixar (.md)</span>
-                        </button>
-                        <button
-                           onClick={handleCopy}
-                           disabled={isGenerating || !generatedCv}
-                           className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-900 hover:bg-zinc-800 disabled:opacity-50 text-zinc-300 text-xs rounded-lg transition-colors font-medium border border-[#1e293b]"
-                        >
-                          {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
-                          <span>{copied ? 'Copiado!' : 'Copiar Texto'}</span>
-                        </button>
-                        <button
-                          onClick={handlePrint}
-                          disabled={isGenerating || !generatedCv}
-                          className="flex items-center gap-1.5 px-4 py-1.5 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white text-xs rounded-lg font-semibold transition-colors shadow-sm"
-                        >
-                          <Printer className="h-3.5 w-3.5" />
-                          <span>Visualizar e Imprimir</span>
-                        </button>
-                      </div>
+                      {/* Botões removidos a pedido da usuária */}
                     </div>
 
                     {/* Main Render box */}
@@ -647,7 +678,20 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
 
                       {generatedCv ? (
                         <div className="markdown-body prose prose-invert max-w-none text-zinc-300 text-sm leading-relaxed space-y-4 select-text">
-                          <Markdown>{generatedCv}</Markdown>
+                          <Markdown
+                            components={{
+                              a: ({ node, ...props }) => (
+                                <a
+                                  {...props}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-purple-400 hover:text-purple-300 underline font-semibold transition-colors cursor-pointer"
+                                />
+                              )
+                            }}
+                          >
+                            {generatedCv}
+                          </Markdown>
                         </div>
                       ) : (
                         !isGenerating && (
@@ -660,7 +704,7 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
 
                     <div className="text-center">
                       <p className="text-zinc-500 text-[10px] leading-relaxed">
-                        * Você pode salvar o documento final como PDF utilizando a opção "Visualizar e Imprimir" de maneira muito simples.
+                        * O currículo é exportado em formato Markdown (.md) premium e otimizado para sistemas de recrutamento robótico (ATS).
                       </p>
                     </div>
                   </div>

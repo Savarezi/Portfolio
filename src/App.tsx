@@ -89,6 +89,14 @@ export default function App() {
         </div>
         
         <div className="flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="p-2 bg-zinc-900 rounded-lg text-amber-400 hover:bg-zinc-800 transition-colors"
+            title={theme === 'dark' ? 'Ativar Modo Claro' : 'Ativar Modo Escuro'}
+            id="mobile-theme-toggle-btn"
+          >
+            {theme === 'dark' ? <Sun className="h-4.5 w-4.5 text-amber-400" /> : <Moon className="h-4.5 w-4.5 text-zinc-400" />}
+          </button>
           <button 
             onClick={() => setMobileMenuOpen(true)}
             id="mobile-menu-trigger-btn"
