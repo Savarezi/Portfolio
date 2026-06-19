@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom scrollbar for refined dashboard look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080b11;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a855f7;
+}
+
+/* ==========================================
+   REFINE LIGHT THEME OVERRIDES (CLEAN & MINIMAL)
+   ========================================== */
+.theme-light {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Base background overrides */
+.theme-light, 
+.theme-light #portfolio-sidebar,
+.theme-light #mobile-navigation-bar,
+.theme-light #mobile-drawer-overlay,
+.theme-light #stats-dashboard-bento > div,
+.theme-light #mission-card,
+.theme-light #profile-hero-card,
+.theme-light footer {
+  background-color: #ffffff !important;
+}
+
+.theme-light #profile-hero-card {
+  background-color: rgba(248, 250, 252, 0.7) !important;
+}
+
+.theme-light #stats-dashboard-bento > div {
+  background-color: rgba(248, 250, 252, 0.8) !important;
+}
+
+.theme-light #main-portfolio-root {
+  background-color: #f8fafc !important;
+}
+
+/* Custom inline hex colors map to light mode values */
+.theme-light .bg-\[\#030712\] { background-color: #f8fafc !important; }
+.theme-light .bg-\[\#0b0f19\] { background-color: #ffffff !important; }
+.theme-light .bg-\[\#0b0f19\]\/60 { background-color: rgba(255, 255, 255, 0.95) !important; }
+.theme-light .bg-\[\#080b11\] { background-color: #ffffff !important; }
+.theme-light .bg-zinc-950\/20 { background-color: rgba(241, 245, 249, 0.5) !important; }
+.theme-light .bg-zinc-950\/40 { background-color: rgba(241, 245, 249, 0.7) !important; }
+.theme-light .bg-zinc-950\/50 { background-color: #f1f5f9 !important; }
+.theme-light .bg-zinc-950\/70 { background-color: #f8fafc !important; }
+.theme-light .bg-zinc-900\/40 { background-color: #f1f5f9 !important; }
+.theme-light .bg-zinc-900\/60 { background-color: #f1f5f9 !important; }
+.theme-light .bg-zinc-900 { background-color: #f1f5f9 !important; }
+.theme-light .hover\:bg-zinc-800:hover { background-color: #e2e8f0 !important; }
+
+/* Text colors overrides for contrast */
+.theme-light .text-white,
+.theme-light .text-zinc-100,
+.theme-light .text-zinc-200,
+.theme-light .text-zinc-300 {
+  color: #0f172a !important;
+}
+
+.theme-light .text-zinc-400 {
+  color: #334155 !important;
+}
+
+.theme-light .text-zinc-500 {
+  color: #64748b !important;
+}
+
+/* Border overrides */
+.theme-light .border-zinc-800,
+.theme-light .border-zinc-800\/40,
+.theme-light .border-zinc-800\/60,
+.theme-light .border-zinc-800\/80,
+.theme-light .border-zinc-700\/80,
+.theme-light .border-zinc-900,
+.theme-light .border-zinc-900\/60,
+.theme-light .border-\[\#1e293b\] {
+  border-color: #cbd5e1 !important;
+}
+
+/* Chatbot styling inside light mode */
+.theme-light #recruiter-chatbot-modal,
+.theme-light #recruiter-chatbot-bubble {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+.theme-light #recruiter-chatbot-modal input,
+.theme-light #recruiter-chatbot-modal textarea {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+.theme-light #recruiter-chatbot-modal .messages-container .message-bot {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+.theme-light #recruiter-chatbot-modal .messages-container .message-user {
+  background-color: #7c3aed !important;
+  color: #ffffff !important;
+}
+
+
