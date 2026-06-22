@@ -95,7 +95,7 @@ export default function ProjectsSection() {
             return (
               <div 
                 key={project.id}
-                className="bg-[#0b0f19]/60 border border-[#1e293b] rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 flex flex-col justify-between group shadow-lg"
+                className="backdrop-blur-md bg-[#0b0f19]/50 border border-[#1e293b] rounded-2xl overflow-hidden hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.25)] hover:scale-[1.015] transition-all duration-300 flex flex-col justify-between group"
                 id={`project-card-${project.id}`}
               >
                 <div className="p-6 space-y-4">

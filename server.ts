@@ -170,6 +170,87 @@ Seja conciso, as respostas devem ter no máximo 2 ou 3 parágrafos explicativos.
   }
 });
 
+// API route for job compatibility analysis (Dossier generation)
+app.post("/api/cv/match-analysis", async (req, res) => {
+  const { jobTitle, jobDescription } = req.body;
+  
+  if (!jobTitle) {
+    return res.status(400).json({ success: false, error: "O título da vaga é obrigatório para a análise." });
+  }
+
+  try {
+    const ai = getGeminiClient();
+    
+    const systemInstruction = `
+Você é uma inteligência especializada em recrutamento tech e análise detalhada de competências (ATS & Headhunting).
+Sua missão única é analisar o quão compatível a Patrícia Oliveira é para uma vaga específica fornecida pelo recrutador, baseando-se estritamente em sua fonte de dados reais.
+
+Dados Reais de Patrícia Oliveira (Fonte de verdade absoluta):
+${PATRICIA_CV_CONTEXT}
+
+Diretrizes da análise:
+1. Calcule um score de match técnico realista de 0 a 100 baseado na adequação das habilidades reais de Patrícia (Python, automações com n8n, SQL, AWS, Salesforce, etc.) com a descrição da vaga.
+2. Identifique pontos fortes práticos (como ela atende à vaga com seus projetos e expertises).
+3. Identifique gaps menores ou pontos a desenvolver (pelo fato de estar no início do curso superior de ADS - término previsto para 2028 - ou áreas menos abordadas de maneira transparente e profissional, mantendo a honestidade técnica de forma construtiva).
+4. Indique de 1 a 2 projetos reais dela (como o Mentoria Tech, Macro Scenario Engine, Planej.ai) com justificativa de fit técnico.
+5. Escreva um parecer consultivo profissional de altíssimo nível detalhando as sinergias técnicas da Patrícia com este cargo específico.
+
+Você DEVE responder estritamente em formato JSON válido seguindo exatamente esta estrutura:
+{
+  "score": 92,
+  "summary": "Breve parágrafo de resumo executivo do match técnico (3 sentenças)...",
+  "strengths": ["Sólida experiência com automação avançada usando n8n...", "Habilidades robustas em manipulação de banco de dados SQL..."],
+  "gaps": ["Desenvolvimento web full-stack avançado ainda em consolidação, suprido por sua forte competência prática em automação..."],
+  "projects": [
+    {
+      "name": "Nome do projeto real da Patrícia que mais combina",
+      "whyFit": "Por que este projeto comprova que ela atende aos requisitos desta vaga."
+    }
+  ],
+  "fullReportMarkdown": "# Parecer de Sinergia Técnica\\n\\nDesenvolva uma análise técnica aprofundada mostrando como os conhecimentos da Patrícia reduzem o tempo de entrega e agregam valor imediato."
+}
+`;
+
+    const userPrompt = `Analise a compatibilidade técnica da Patrícia para a vaga de: "${jobTitle}" com os seguintes detalhes/requisitos: "${jobDescription || 'Não informados'}".`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash",
+      contents: userPrompt,
+      config: {
+        systemInstruction,
+        temperature: 0.2,
+        responseMimeType: "application/json"
+      }
+    });
+
+    const textOutput = response.text || "{}";
+    
+    // Attempt parsing. If anything fails, build a robust fallback object.
+    let analysis;
+    try {
+      analysis = JSON.parse(textOutput);
+    } catch (parseError) {
+      console.warn("Failed to parse Gemini output as JSON, reconstructing safe fallback.", parseError);
+      // Clean raw text or extract JSON block manually
+      let jsonMatch = textOutput.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        try {
+          analysis = JSON.parse(jsonMatch[0]);
+        } catch {
+          throw new Error("Formato inválido de resposta de IA.");
+        }
+      } else {
+        throw new Error("Falha ao analisar a resposta da IA.");
+      }
+    }
+
+    res.json({ success: true, analysis });
+  } catch (error: any) {
+    console.error("Match Analysis Error:", error);
+    res.status(500).json({ success: false, error: error.message || "Internal server error" });
+  }
+});
+
 // Vite middleware flow for full stack deployment
 const startServer = async () => {
   if (process.env.NODE_ENV !== "production") {

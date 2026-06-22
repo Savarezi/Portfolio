@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   User, 
   Briefcase, 
@@ -12,7 +12,9 @@ import {
   Linkedin,
   Bot,
   Sun,
-  Moon
+  Moon,
+  Compass,
+  Sparkles
 } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import AboutSection from './components/AboutSection';
@@ -21,6 +23,9 @@ import ProjectsSection from './components/ProjectsSection';
 import SkillsSection from './components/SkillsSection';
 import EducationSection from './components/EducationSection';
 import FloatingBot from './components/FloatingBot';
+import OnboardingTour from './components/OnboardingTour';
+import StarfieldBackground from './components/StarfieldBackground';
+import DossierSection from './components/DossierSection';
 import { PERSONAL_INFO } from './data';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -30,6 +35,17 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [recruiterWidgetOpen, setRecruiterWidgetOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [tourOpen, setTourOpen] = useState(false);
+
+  useEffect(() => {
+    const hasSeenTour = localStorage.getItem('hasSeenPortfolioTour_v1');
+    if (!hasSeenTour) {
+      const timer = setTimeout(() => {
+        setTourOpen(true);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
@@ -52,6 +68,8 @@ export default function App() {
         return <SkillsSection />;
       case 'certificacoes':
         return <EducationSection />;
+      case 'dossie':
+        return <DossierSection />;
       default:
         return <AboutSection onNavigateToProjects={() => setActiveTab('projetos')} />;
     }
@@ -63,11 +81,15 @@ export default function App() {
     { id: 'projetos', label: 'Projetos', icon: Code2 },
     { id: 'habilidades', label: 'Habilidades', icon: Cpu },
     { id: 'certificacoes', label: 'Certificações / Cursos', icon: GraduationCap },
+    { id: 'dossie', label: 'Dossiê Compatibilidade 📄', icon: Sparkles },
   ];
 
   return (
     <div className={`flex min-h-screen font-sans selection:bg-purple-900/40 selection:text-purple-300 transition-colors duration-300 ${theme === 'dark' ? 'bg-[#030712] text-zinc-100 theme-dark' : 'bg-[#f8fafc] text-slate-900 theme-light'}`} id="main-portfolio-root">
       
+      {/* Background Starfield */}
+      <StarfieldBackground />
+
       {/* 1. DESKTOP SIDEBAR NAVIGATION */}
       <Sidebar 
         activeTab={activeTab} 
@@ -77,6 +99,7 @@ export default function App() {
         onOpenRecruiterBot={handleOpenRecruiterWidget}
         theme={theme}
         toggleTheme={toggleTheme}
+        onStartTour={() => setTourOpen(true)}
       />
 
       {/* 2. RESPONSIVE MOBILE NAVIGATION HEADER */}
@@ -90,8 +113,16 @@ export default function App() {
         
         <div className="flex items-center gap-3">
           <button
+            onClick={() => setTourOpen(true)}
+            className="p-2 bg-zinc-900 rounded-lg text-purple-400 hover:bg-zinc-800 transition-colors cursor-pointer"
+            title="Iniciar Tour Guiado"
+            id="mobile-tour-trigger-btn"
+          >
+            <Compass className="h-4.5 w-4.5" />
+          </button>
+          <button
             onClick={toggleTheme}
-            className="p-2 bg-zinc-900 rounded-lg text-amber-400 hover:bg-zinc-800 transition-colors"
+            className="p-2 bg-zinc-900 rounded-lg text-amber-400 hover:bg-zinc-800 transition-colors cursor-pointer"
             title={theme === 'dark' ? 'Ativar Modo Claro' : 'Ativar Modo Escuro'}
             id="mobile-theme-toggle-btn"
           >
@@ -100,7 +131,7 @@ export default function App() {
           <button 
             onClick={() => setMobileMenuOpen(true)}
             id="mobile-menu-trigger-btn"
-            className="text-zinc-400 hover:text-white p-1"
+            className="text-zinc-400 hover:text-white p-1 cursor-pointer"
           >
             <Menu className="h-6 w-6" />
           </button>
@@ -130,38 +161,51 @@ export default function App() {
               </button>
             </div>
 
-            {/* Navigation links block */}
-            <nav className="p-6 space-y-3 flex-1 flex flex-col justify-center">
-              {tabsMeta.map((tab) => {
-                const Icon = tab.icon;
-                const isActive = activeTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => {
-                      setActiveTab(tab.id);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`flex items-center gap-4 px-5 py-4 rounded-xl text-base font-medium transition-all w-full
-                      ${isActive 
-                        ? 'bg-purple-950/40 text-purple-400 border border-purple-500/30' 
-                        : 'text-zinc-400 hover:text-white hover:bg-zinc-900/60'
-                      }`}
-                  >
-                    <Icon className="h-5.5 w-5.5 flex-shrink-0" />
-                    <span>{tab.label}</span>
-                  </button>
-                );
-              })}
+             {/* Navigation links block */}
+             <nav className="p-6 space-y-3 flex-1 flex flex-col justify-center">
+               {tabsMeta.map((tab) => {
+                 const Icon = tab.icon;
+                 const isActive = activeTab === tab.id;
+                 return (
+                   <button
+                     key={tab.id}
+                     id={`mobile-nav-item-${tab.id}`}
+                     onClick={() => {
+                       setActiveTab(tab.id);
+                       setMobileMenuOpen(false);
+                     }}
+                     className={`flex items-center gap-4 px-5 py-4 rounded-xl text-base font-medium transition-all w-full cursor-pointer
+                       ${isActive 
+                         ? 'bg-purple-950/40 text-purple-400 border border-purple-500/30' 
+                         : 'text-zinc-400 hover:text-white hover:bg-zinc-900/60'
+                       }`}
+                   >
+                     <Icon className="h-5.5 w-5.5 flex-shrink-0" />
+                     <span>{tab.label}</span>
+                   </button>
+                 );
+               })}
+ 
+               <button
+                 onClick={handleOpenRecruiterWidget}
+                 id="mobile-nav-item-ia-recrutadora"
+                 className="flex items-center gap-4 px-5 py-4 rounded-xl text-base font-semibold text-emerald-400 hover:text-emerald-300 hover:bg-emerald-950/20 border border-dashed border-emerald-500/20 w-full transition-all cursor-pointer"
+               >
+                 <Bot className="h-5.5 w-5.5 flex-shrink-0 text-emerald-400" />
+                 <span>Entrevistar via IA (Patricia)</span>
+               </button>
 
-              <button
-                onClick={handleOpenRecruiterWidget}
-                className="flex items-center gap-4 px-5 py-4 rounded-xl text-base font-semibold text-emerald-400 hover:text-emerald-300 hover:bg-emerald-950/20 border border-dashed border-emerald-500/20 w-full transition-all"
-              >
-                <Bot className="h-5.5 w-5.5 flex-shrink-0 text-emerald-400" />
-                <span>Entrevistar via IA (Patricia)</span>
-              </button>
-            </nav>
+               <button
+                 onClick={() => {
+                   setMobileMenuOpen(false);
+                   setTourOpen(true);
+                 }}
+                 className="flex items-center gap-4 px-5 py-4 rounded-xl text-base font-semibold text-purple-400 hover:text-purple-300 hover:bg-purple-950/20 border border-dashed border-purple-500/20 w-full transition-all cursor-pointer"
+               >
+                 <Compass className="h-5.5 w-5.5 flex-shrink-0 text-purple-400 animate-pulse" />
+                 <span>Tour do Portfólio 🧭</span>
+               </button>
+             </nav>
 
             {/* Footer row contacts inside mobile dropdown */}
             <div className="p-6 border-t border-zinc-900 bg-zinc-950/40 space-y-4">
@@ -228,6 +272,15 @@ export default function App() {
 
       {/* FLOATING CORNER INTERACTIVE RECRUITING ASSISTANT CHATBOT */}
       <FloatingBot isOpen={recruiterWidgetOpen} setIsOpen={setRecruiterWidgetOpen} />
+      
+      {/* ONBOARDING FLOW */}
+      <OnboardingTour
+        isOpen={tourOpen}
+        onClose={() => setTourOpen(false)}
+        setActiveTab={setActiveTab}
+        setMobileMenuOpen={setMobileMenuOpen}
+        onOpenRecruiterBot={handleOpenRecruiterWidget}
+      />
       
     </div>
   );
