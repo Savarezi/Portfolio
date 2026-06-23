@@ -36,29 +36,77 @@ const generateClientFallbackDossier = (title: string, desc: string): MatchAnalys
   const normDesc = desc.toLowerCase();
   const fullText = `${normTitle} ${normDesc}`;
 
-  let score = 55; // Base default score
-  let strengths: string[] = [];
-  let gaps: string[] = [];
-  let projects: ProjectFit[] = [];
-  
-  // Checking dimensions
+  // Check tech dimensions
   const hasN8n = /n8n|automa|auto|integrat|flow|chat|bot|typebot|zapier/.test(fullText);
   const hasPython = /python|pandas|numpy|script|programador|desenvolv|dev|backend/.test(fullText);
   const hasSql = /sql|banco|postgres|db|mysql|sqlite|data/.test(fullText);
   const hasCloud = /aws|cloud|nuvem|server|linux|ec2|s3/.test(fullText);
   const hasData = /dado|data|analis|excel|bi|power/i.test(fullText);
 
-  // Score calculations
-  if (hasN8n) score += 15;
-  if (hasPython) score += 12;
-  if (hasSql) score += 10;
-  if (hasCloud) score += 8;
+  const isTechVaga = hasN8n || hasPython || hasSql || hasCloud || hasData;
+  const unrelatedMatch = /(enferm|enfermeir|medic[oa]|psicol|hospital|saude|nutri|fisiotera|dentist|culinari|cozinh|chef|gastronom|pedago|profess[or]|infantil|obra|construc|pedreir|advogad|juridic|direito|mecanic|veterinari|estet|farmac|odontol|farma|cirurg|terapeu|odont|educador|socorrista|bombeiro|biolog)/i.test(fullText);
+
+  // If completely unrelated or completely missing tech vocabulary
+  if (unrelatedMatch || !isTechVaga) {
+    const score = Math.floor(Math.random() * 5) + 5; // 5% to 9% compatibility
+    const summary = `A análise de perfil identificou que o cargo solicitado (${title}) pertence a um segmento não-tecnológico sem sinergia funcional com o portfólio de Patrícia. A candidata possui especialização 100% voltada à Tecnologia da Informação (Automações Inteligentes com n8n, Engenharia de Dados com Python/SQL e Infraestrutura Cloud), não possuindo as habilitações clínicas, registro profissional obrigatório (como COREN, CRM ou OAB) ou formação para este setor.`;
+    
+    const strengths = [
+      "Elevada capacidade para otimizar processos internos operacionais através de lógica e automação.",
+      "Excelente habilidade para gerenciar softwares e ferramentas administrativas ou de CRM."
+    ];
+
+    const gaps = [
+      `Falta total de habilitação acadêmica, técnica ou estágio em '${title}'.`,
+      "Ausência de registro legal ou regulatório obrigatório necessário para atuar na função.",
+      "Dedicada exclusivamente e de forma contínua à graduação em Análise e Desenvolvimento de Sistemas (ADS)."
+    ];
+
+    const projects = [
+      {
+        name: "Dorsal Tecnológica do Portfólio",
+        whyFit: "Os projetos da Patrícia consolidam sua aptidão analítica e de orquestração de sistemas, porém estão inteiramente fora do escopo prático exigido por este cargo de atuação direta."
+      }
+    ];
+
+    const reportMarkdown = `# Relatório de Sinergia e Ajuste de Escopo - ${title}
+
+## Parecer Técnico de Aderência
+Não existe compatibilidade operacional ou conceitual direta entre o histórico de competências da candidata **Patrícia Oliveira** e as atribuições exigidas para a vaga de **${title}**.
+
+A candidata possui trajetória focada exclusivamente na eficiência digital:
+- **Automação de Fluxos**: Especialidade prática avançada e orquestração ágil com **n8n**.
+- **Proficiência em Dados**: Manipulação e análise estruturada de bancos de dados modernos com **SQL** e **Python**.
+- **Infraestrutura**: Projetos estruturados e governança básica na nuvem **AWS**.
+
+Como este cargo exige formação específica em outra área, recomenda-se direcionar a candidata para funções correlatas à tecnologia, como Analista de BI, Desenvolvimento de Software de suporte comercial, Gestão de CRMs ou Projetos de Automação de Processos.`;
+
+    return {
+      score,
+      summary,
+      strengths,
+      gaps,
+      projects,
+      fullReportMarkdown: reportMarkdown
+    };
+  }
+
+  // Calculate score for tech roles logically
+  let score = 35; // Base tech score
+  let strengths: string[] = [];
+  let gaps: string[] = [];
+  let projects: ProjectFit[] = [];
+
+  if (hasN8n) score += 18;
+  if (hasPython) score += 15;
+  if (hasSql) score += 12;
+  if (hasCloud) score += 10;
   if (hasData) score += 10;
 
   // Clamp score
-  score = Math.max(35, Math.min(97, score));
+  score = Math.max(30, Math.min(96, score));
 
-  // Determine projects
+  // Determine projects for matching tech roles
   if (hasN8n || hasPython) {
     projects.push({
       name: "Mentoria Tech / Hub (n8n + Typebot + API LLMs)",

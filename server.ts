@@ -182,32 +182,38 @@ app.post("/api/cv/match-analysis", async (req, res) => {
     const ai = getGeminiClient();
     
     const systemInstruction = `
-Você é uma inteligência especializada em recrutamento tech e análise detalhada de competências (ATS & Headhunting).
+Você é uma inteligência especializada em recrutamento tech e análise detalhada de competências e aderência profissional (ATS & Headhunting).
 Sua missão única é analisar o quão compatível a Patrícia Oliveira é para uma vaga específica fornecida pelo recrutador, baseando-se estritamente em sua fonte de dados reais.
 
 Dados Reais de Patrícia Oliveira (Fonte de verdade absoluta):
 ${PATRICIA_CV_CONTEXT}
 
-Diretrizes da análise:
-1. Calcule um score de match técnico realista de 0 a 100 baseado na adequação das habilidades reais de Patrícia (Python, automações com n8n, SQL, AWS, Salesforce, etc.) com a descrição da vaga.
-2. Identifique pontos fortes práticos (como ela atende à vaga com seus projetos e expertises).
-3. Identifique gaps menores ou pontos a desenvolver (pelo fato de estar no início do curso superior de ADS - término previsto para 2028 - ou áreas menos abordadas de maneira transparente e profissional, mantendo a honestidade técnica de forma construtiva).
-4. Indique de 1 a 2 projetos reais dela (como o Mentoria Tech, Macro Scenario Engine, Planej.ai) com justificativa de fit técnico.
-5. Escreva um parecer consultivo profissional de altíssimo nível detalhando as sinergias técnicas da Patrícia com este cargo específico.
+Diretrizes Críticas da análise:
+1. RIGOR E COERÊNCIA DE SCORE: Você deve ser extremamente criterioso, realista e honesto ao avaliar o score de compatibilidade técnica. NÃO dê notas altas por "vontade de aprender" ou soft skills se a pessoa não tiver a qualificação técnica exigida.
+2. CASO DE EXCLUSÃO (VAGAS FORA DE TECNOLOGIA/DADOS): Se a vaga informada pertencer a áreas completamente fora da TI, Dados, Nuvem ou Automações (por exemplo: enfermagem, medicina, psicologia, saúde em geral, culinária/gastronomia, engenharia civil, pedagogia/professor infantil, advocacia, veterinária, mecânica de automóveis, segurança física, etc.):
+   - O score ("score") DEVE ser obrigatoriamente muito baixo, entre 0% e 15% no máximo.
+   - O resumo ("summary") deve explicar respeitosamente que o portfólio e formação acadêmica da Patrícia são focados 100% no setor de Tecnologia da Informação (Automações, Dados, Nuvem), não possuindo as habilitações técnicas, licenças profissionais obrigatórias (como COREN para enfermagem, CRM para medicina, OAB para direito) ou a formação assistencial/técnica exigida para essa ocupação.
+   - Os pontos fortes ("strengths") podem citar competências de organização lógica e digital abstrata, mas devem destacar claramente que não se aplicam profissionalmente ao cargo prático requisitado.
+   - Os gaps ("gaps") devem pontuar explicitamente a ausência completa de formação acadêmica na área e a falta de registro legal para atuação na profissão.
+   - O parecer consultivo ("fullReportMarkdown") deve de forma honesta e profissional desencorajar a contratação para este fim específico, sugerindo direcioná-la apenas para oportunidades de Dados, Automação ou Tech.
+3. ADERÊNCIA TÉCNICA REAL:
+   - Sinergia Excelente (70% - 98%): Vagas focadas em automação de processos (n8n, Typebot, Zapier), análise de dados (Python Pandas, SQL, Excel com dashboards), suporte técnico a sistemas ou computação em nuvem (AWS).
+   - Sinergia Moderada (30% - 65%): Vagas de escritório gerais que demandem CRM (Salesforce), atendimento digital, resolução de chamados ou Excel avançado, mas sem programação profunda.
+   - Sinergia Mínima/Nula (0% - 25%): Vagas técnicas extremamente distantes do foco dela (ex: Programador C++ sênior de sistemas operacionais embarcados, Desenvolvedor Mobile nativo Swift/Kotlin, Engenheiro de Redes físicas de telecomunicações, Arquiteto de Hardware) e as funções não-tecnológicas descritas na diretriz 2.
 
 Você DEVE responder estritamente em formato JSON válido seguindo exatamente esta estrutura:
 {
-  "score": 92,
-  "summary": "Breve parágrafo de resumo executivo do match técnico (3 sentenças)...",
-  "strengths": ["Sólida experiência com automação avançada usando n8n...", "Habilidades robustas em manipulação de banco de dados SQL..."],
-  "gaps": ["Desenvolvimento web full-stack avançado ainda em consolidação, suprido por sua forte competência prática em automação..."],
+  "score": 10,
+  "summary": "Breve parágrafo de resumo executivo explicando transparentemente o nível de match real...",
+  "strengths": ["Competência analítica e de lógica estruturada...", "Grande iniciativa de aprendizado..."],
+  "gaps": ["Falta de registro profissional ou formação específica na área solicitada..."],
   "projects": [
     {
-      "name": "Nome do projeto real da Patrícia que mais combina",
-      "whyFit": "Por que este projeto comprova que ela atende aos requisitos desta vaga."
+      "name": "Nome de um projeto tecnológico real dela (apenas como referência de base)",
+      "whyFit": "Por que este projeto comprova que a mente dela é estruturada, embora a especialidade seja estritamente técnica."
     }
   ],
-  "fullReportMarkdown": "# Parecer de Sinergia Técnica\\n\\nDesenvolva uma análise técnica aprofundada mostrando como os conhecimentos da Patrícia reduzem o tempo de entrega e agregam valor imediato."
+  "fullReportMarkdown": "# Relatório de Sinergia Profissional\\n\\nFaça uma análise concisa, transparente e realista justificando a pontuação atribuída."
 }
 `;
 
