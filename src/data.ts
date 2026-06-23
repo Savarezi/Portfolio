@@ -146,6 +146,18 @@ export const EDUCATION_CERTS: EducationCertification[] = [
     type: 'certification'
   },
   {
+    title: 'AI React Front-end',
+    institution: 'Santander Open Academy',
+    year: '2025',
+    type: 'certification'
+  },
+  {
+    title: 'Microsoft Forms',
+    institution: 'Microsoft',
+    year: '2025',
+    type: 'certification'
+  },
+  {
     title: 'Bootcamp Santander 2025 – Automação com n8n',
     institution: 'Santander Open Academy',
     year: '2025',
@@ -154,6 +166,12 @@ export const EDUCATION_CERTS: EducationCertification[] = [
   {
     title: 'Formação em Tecnologia da Informação (360h)',
     institution: 'Escola da Nuvem',
+    year: '2024',
+    type: 'certification'
+  },
+  {
+    title: 'SQL com PostgreSQL',
+    institution: 'Udemy',
     year: '2024',
     type: 'certification'
   },
@@ -195,6 +213,6 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     title: 'Desenvolvimento',
     iconName: 'Shield',
-    skills: ['Python (Fundamentos-Avançado)', 'JavaScript', 'HTML5 & CSS3', 'C# (Sintaxe e Tipos)', 'Git & GitHub']
+    skills: ['React', 'TypeScript', 'JavaScript (ES6+)', 'Desenvolvimento SPA', 'Python', 'C# (Fundamentos)', 'Git & GitHub']
   }
 ];
