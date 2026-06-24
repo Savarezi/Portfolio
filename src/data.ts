@@ -15,6 +15,15 @@ export const PERSONAL_INFO = {
 
 export const PROJECTS: Project[] = [
   {
+    id: 'ia-reports-excel',
+    title: 'IA Reports & Porsche Sales Dashboard',
+    description: 'Projeto de aceleração voltado para a criação de fluxos de trabalho inteligentes, utilizando a integração de dados em Excel, agentes baseados em GPT e Claude Code para sanitização, análise e visualização de dados.',
+    githubUrl: 'https://github.com/Savarezi/IA-Reports-com-Excel-GPT-Agents-e-Claude-Code',
+    liveUrl: 'https://porschesalesdashboard.netlify.app/',
+    tags: ['GPT Agents', 'Claude Code', 'Excel', 'Data Analytics', 'Dashboards'],
+    category: 'ia',
+  },
+  {
     id: 'mentoria-tech',
     title: 'Mentoria Tech / Hub',
     description: 'Uma solução inteligente e automatizada voltada para o desenvolvimento de carreira na área de tecnologia. O sistema recomenda trilhas de estudo, sugere posicionamento profissional e automatiza a orientação na área.',
