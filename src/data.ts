@@ -24,6 +24,14 @@ export const PROJECTS: Project[] = [
     category: 'ia',
   },
   {
+    id: 'jornada-dev-totvs',
+    title: 'Jornada DEV - Start+ TOTVS',
+    description: 'Este repositório armazena estudos, práticas e projetos desenvolvidos ao longo da jornada no programa Start+ da TOTVS, focando em Lógica de Programação, Desenvolvimento de Sistemas, Protheus, ADVPL e Orientação a Objetos. (Ainda em construção 🚀)',
+    githubUrl: 'https://github.com/Savarezi/Jornada-DEV',
+    tags: ['TOTVS Start+', 'ADVPL', 'Protheus', 'Lógica de Programação', 'OOP', 'Em Construção'],
+    category: 'fullstack',
+  },
+  {
     id: 'mentoria-tech',
     title: 'Mentoria Tech / Hub',
     description: 'Uma solução inteligente e automatizada voltada para o desenvolvimento de carreira na área de tecnologia. O sistema recomenda trilhas de estudo, sugere posicionamento profissional e automatiza a orientação na área.',
