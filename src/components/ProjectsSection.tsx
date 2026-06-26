@@ -32,7 +32,9 @@ import {
   MessageSquare,
   Plus,
   Play,
-  Check
+  Check,
+  BookOpen,
+  Book
 } from 'lucide-react';
 import { PROJECTS } from '../data';
 import { Project } from '../types';
@@ -1038,6 +1040,304 @@ export default function ProjectsSection() {
                           <span className="w-1 h-1 rounded-full bg-purple-500 animate-pulse"></span>
                           PORTAL DE RECRUTAMENTO ATIVO
                         </span>
+                      </div>
+                    </div>
+                  ) : project.id === 'analise-financeiro' ? (
+                    <div className="w-full h-full bg-[#020512] overflow-hidden flex flex-col justify-between font-sans select-none border-b border-zinc-950 relative group">
+                      {/* Grid / Stock board pattern */}
+                      <div className="absolute inset-0 bg-[linear-gradient(rgba(30,58,138,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,0.1)_1px,transparent_1px)] bg-[size:16px_16px]"></div>
+                      
+                      {/* B3 Logo Backdrop Brackets - styled precisely */}
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+                        <div className="flex items-center gap-2 text-white font-sans font-bold text-6xl md:text-7xl select-none tracking-tighter">
+                          <span className="text-zinc-400 font-extralight">[</span>
+                          <span className="font-extrabold text-white">B</span>
+                          <span className="text-zinc-400 font-extralight">]</span>
+                          <sup className="text-xs font-semibold text-purple-400 -mt-8">3</sup>
+                        </div>
+                      </div>
+
+                      {/* Top Bar - Tableau Dashboard Indicator */}
+                      <div className="flex items-center justify-between px-3 py-1.5 border-b border-zinc-900/60 bg-[#04091e]/90 backdrop-blur-sm relative z-10">
+                        <div className="flex items-center gap-1.5">
+                          <div className="flex gap-0.5 items-center justify-center h-4 w-4 bg-blue-600/20 rounded border border-blue-500/30">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                          </div>
+                          <span className="text-[9px] font-bold text-zinc-100 font-sans tracking-tight">Painel de Decisões Ibovespa</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[5.5px] font-bold text-emerald-400">
+                            <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></span>
+                            TABLEAU LIVE
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Stock tickers Grid - LED Board Mockup */}
+                      <div className="flex-1 p-2.5 grid grid-cols-2 gap-2 relative z-10 overflow-hidden">
+                        
+                        {/* Column 1 */}
+                        <div className="space-y-1">
+                          <div className="grid grid-cols-3 text-[5.5px] font-mono text-zinc-500 uppercase tracking-wider font-bold border-b border-zinc-900 pb-0.5 mb-1 text-left px-1">
+                            <span>Ativo</span>
+                            <span className="text-right">Var. %</span>
+                            <span className="text-right">Preço</span>
+                          </div>
+                          
+                          <div className="space-y-0.5">
+                            {[
+                              { symbol: 'ALPA4', change: -0.85, price: '39,42' },
+                              { symbol: 'ALUP11', change: 0.12, price: '24,51' },
+                              { symbol: 'AMAR3', change: -0.74, price: '6,69' },
+                              { symbol: 'ARZZ3', change: -2.16, price: '66,52' },
+                              { symbol: 'ATOM3', change: 0.00, price: '3,18' },
+                              { symbol: 'ZUL4', change: 4.06, price: '30,18' }
+                            ].map((stock) => (
+                              <div key={stock.symbol} className="grid grid-cols-3 text-[7.5px] font-mono items-center py-0.5 hover:bg-zinc-900/40 rounded px-1 transition-colors">
+                                <span className="text-amber-400 font-bold text-left">{stock.symbol}</span>
+                                <span className={`text-right font-semibold ${stock.change < 0 ? 'text-rose-500' : stock.change > 0 ? 'text-emerald-400' : 'text-zinc-400'}`}>
+                                  {stock.change > 0 ? '+' : ''}{stock.change.toFixed(2)}%
+                                </span>
+                                <span className="text-white font-medium text-right">{stock.price}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Column 2 */}
+                        <div className="space-y-1">
+                          <div className="grid grid-cols-3 text-[5.5px] font-mono text-zinc-500 uppercase tracking-wider font-bold border-b border-zinc-900 pb-0.5 mb-1 text-left px-1">
+                            <span>Ativo</span>
+                            <span className="text-right">Var. %</span>
+                            <span className="text-right">Preço</span>
+                          </div>
+                          
+                          <div className="space-y-0.5">
+                            {[
+                              { symbol: 'BOVA11', change: 0.65, price: '101,49' },
+                              { symbol: 'BPAN4', change: 1.35, price: '8,99' },
+                              { symbol: 'BRAP3', change: -1.05, price: '42,05' },
+                              { symbol: 'BRAP4', change: 0.31, price: '47,51' },
+                              { symbol: 'BRDT3', change: 0.32, price: '21,32' },
+                              { symbol: 'IBOV', change: 1.13, price: '124.981' }
+                            ].map((stock) => (
+                              <div key={stock.symbol} className="grid grid-cols-3 text-[7.5px] font-mono items-center py-0.5 hover:bg-zinc-900/40 rounded px-1 transition-colors">
+                                <span className="text-amber-400 font-bold text-left">{stock.symbol}</span>
+                                <span className={`text-right font-semibold ${stock.change < 0 ? 'text-rose-500' : stock.change > 0 ? 'text-emerald-400' : 'text-zinc-400'}`}>
+                                  {stock.change > 0 ? '+' : ''}{stock.change.toFixed(2)}%
+                                </span>
+                                <span className="text-white font-medium text-right">{stock.price}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                      </div>
+
+                      {/* Bottom Mini Trend widget with stock chart representation */}
+                      <div className="h-[40px] px-3 py-1 bg-[#04081b] border-t border-zinc-900/85 flex items-center justify-between gap-3 relative z-10">
+                        {/* Mini-chart representation */}
+                        <div className="flex-1 flex items-center gap-1">
+                          <TrendingUp className="w-3 h-3 text-emerald-400 shrink-0" />
+                          <div className="text-left leading-none">
+                            <span className="text-[8px] font-bold text-zinc-200">Consultoria Estratégica</span>
+                            <p className="text-[5.5px] text-zinc-500 font-mono mt-0.5">Portfólio & Dividendos Ativos</p>
+                          </div>
+                        </div>
+
+                        {/* Sparkline chart svg */}
+                        <div className="w-[80px] h-full flex items-center">
+                          <svg className="w-full h-[18px]" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0,18 L15,14 L30,15 L45,10 L60,12 L75,4 L90,6 L100,2" stroke="#10b981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M0,18 L15,14 L30,15 L45,10 L60,12 L75,4 L90,6 L100,2 L100,20 L0,20 Z" fill="url(#chartFillGrad)" opacity="0.15" />
+                            <defs>
+                              <linearGradient id="chartFillGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stopColor="#10b981" />
+                                <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+                              </linearGradient>
+                            </defs>
+                          </svg>
+                        </div>
+
+                        {/* Extra indicators */}
+                        <div className="text-right leading-none shrink-0">
+                          <span className="text-[7.5px] font-mono text-emerald-400 font-extrabold">+1,13%</span>
+                          <p className="text-[5px] text-zinc-500 font-mono mt-0.5">FECHADO</p>
+                        </div>
+                      </div>
+
+                    </div>
+                  ) : project.id === 'sistema-biblioteca' ? (
+                    <div className="w-full h-full bg-[#1e130c]/90 overflow-hidden flex flex-col font-sans select-none border-b border-[#2d1c10] relative group">
+                      {/* Bookshelf Background Image with blur & mahogany overlay */}
+                      <div className="absolute inset-0 z-0">
+                        <img 
+                          src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"
+                          alt="Library bookshelves"
+                          className="w-full h-full object-cover filter blur-[1px] brightness-[0.22] contrast-[1.1] transition-transform duration-700 group-hover:scale-105"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#2d1b10]/80 via-[#1b0f08]/90 to-black/95"></div>
+                      </div>
+
+                      {/* Header Menu Block */}
+                      <div className="bg-[#2c1d11] border-b border-[#3e2918] px-3 py-1.5 flex flex-col items-center gap-1.5 relative z-10 shadow-md">
+                        <div className="flex items-center gap-1.5">
+                          <BookOpen className="w-3.5 h-3.5 text-amber-400" />
+                          <span className="text-[9.5px] font-extrabold text-stone-100 tracking-wide uppercase">Sistema de Biblioteca</span>
+                        </div>
+                        {/* Tab buttons */}
+                        <div className="flex items-center gap-1 scale-[0.85] origin-center -my-0.5">
+                          <span className="px-2 py-0.5 rounded text-[7px] font-bold bg-[#14422e] text-white border border-[#1e5c41] shadow-inner cursor-pointer">
+                            Livros
+                          </span>
+                          <span className="px-2 py-0.5 rounded text-[7px] font-medium bg-[#463121] text-stone-300 border border-[#5c402c] cursor-pointer hover:text-white transition-colors">
+                            Usuários
+                          </span>
+                          <span className="px-2 py-0.5 rounded text-[7px] font-medium bg-[#463121] text-stone-300 border border-[#5c402c] cursor-pointer hover:text-white transition-colors">
+                            Empréstimos
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Main Workspace Frame with book sheet container */}
+                      <div className="flex-1 p-2 md:p-3 relative z-10 flex flex-col justify-between overflow-hidden">
+                        
+                        {/* Centered White "Paper" Card */}
+                        <div className="bg-[#fcfbf7] rounded-lg border border-[#e2dac6] shadow-[0_4px_12px_rgba(0,0,0,0.4)] p-2.5 flex-1 flex flex-col justify-between max-w-[95%] mx-auto w-full text-stone-800 overflow-hidden">
+                          
+                          {/* Inner Header */}
+                          <div className="flex items-center justify-between border-b border-[#e2dac6] pb-1.5 mb-1.5">
+                            <div className="flex items-center gap-1 text-[#1a3a2a]">
+                              <Book className="w-3.5 h-3.5 text-[#14422e]" />
+                              <span className="text-[9px] font-black tracking-tight text-[#14422e]">📗 Gerenciamento de Livros</span>
+                            </div>
+                            <span className="text-[5.5px] font-mono text-stone-500 font-bold uppercase tracking-wider bg-stone-100 px-1 py-0.2 rounded border border-stone-200">
+                              Módulo Ativo
+                            </span>
+                          </div>
+
+                          {/* Split layout inside the paper: Form (left) & Registered books (right) */}
+                          <div className="flex-1 grid grid-cols-12 gap-2 overflow-hidden">
+                            
+                            {/* Left Side: Register form */}
+                            <div className="col-span-5 border-r border-[#eedfc5]/60 pr-2 flex flex-col justify-between text-left">
+                              <span className="text-[7px] font-black text-[#5c3e21] block tracking-wide border-b border-[#eedfc5]/30 pb-0.5 mb-1">
+                                Cadastrar Novo Livro
+                              </span>
+                              
+                              <div className="space-y-1 flex-1 flex flex-col justify-center">
+                                {/* Título field */}
+                                <div>
+                                  <label className="text-[5px] font-extrabold text-stone-500 uppercase tracking-wider block">Título</label>
+                                  <div className="h-4 px-1 bg-white border border-[#e2dac6] rounded text-[6px] text-stone-700 flex items-center italic truncate">
+                                    O Senhor dos Anéis
+                                  </div>
+                                </div>
+                                {/* Autor field */}
+                                <div>
+                                  <label className="text-[5px] font-extrabold text-stone-500 uppercase tracking-wider block">Autor</label>
+                                  <div className="h-4 px-1 bg-white border border-[#e2dac6] rounded text-[6px] text-stone-700 flex items-center italic truncate">
+                                    J.R.R. Tolkien
+                                  </div>
+                                </div>
+                                {/* Two columns row */}
+                                <div className="grid grid-cols-2 gap-1">
+                                  <div>
+                                    <label className="text-[5px] font-extrabold text-stone-500 uppercase tracking-wider block">Ano</label>
+                                    <div className="h-4 px-1 bg-white border border-[#e2dac6] rounded text-[6px] text-stone-700 flex items-center italic">
+                                      1954
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <label className="text-[5px] font-extrabold text-stone-500 uppercase tracking-wider block">Gênero</label>
+                                    <div className="h-4 px-1 bg-white border border-[#e2dac6] rounded text-[6px] text-stone-700 flex items-center italic truncate animate-pulse">
+                                      Fantasia
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <button className="w-full mt-1.5 h-4.5 bg-[#14422e] hover:bg-[#1a553c] text-white text-[6.5px] font-extrabold uppercase tracking-widest rounded shadow-sm border border-[#0d3021] flex items-center justify-center gap-1 transition-all duration-300">
+                                <Plus className="w-2 h-2 text-white" />
+                                Salvar Livro
+                              </button>
+                            </div>
+
+                            {/* Right Side: Registered books list / Table mockup */}
+                            <div className="col-span-7 flex flex-col justify-between text-left">
+                              <span className="text-[7px] font-black text-[#5c3e21] block tracking-wide border-b border-[#eedfc5]/30 pb-0.5 mb-1">
+                                Livros Cadastrados (Disponível/Emprestado)
+                              </span>
+
+                              <div className="flex-1 overflow-hidden flex flex-col justify-between">
+                                {/* Simple Table */}
+                                <div className="space-y-0.5">
+                                  {/* Table Header */}
+                                  <div className="grid grid-cols-12 text-[4.5px] font-mono font-black text-[#5c3e21]/70 uppercase tracking-wider border-b border-[#eedfc5] pb-0.5 mb-1">
+                                    <span className="col-span-1">ID</span>
+                                    <span className="col-span-4">Título</span>
+                                    <span className="col-span-3">Autor</span>
+                                    <span className="col-span-2 text-center">Status</span>
+                                    <span className="col-span-2 text-right">Ações</span>
+                                  </div>
+
+                                  {/* Table Rows */}
+                                  {[
+                                    { id: '1', title: 'O Alquimista', author: 'Paulo Coelho', status: 'Disponível', isAvailable: true },
+                                    { id: '2', title: 'Dom Casmurro', author: 'Machado de Assis', status: 'Emprestado', isAvailable: false },
+                                    { id: '3', title: 'A Revolução dos Bichos', author: 'George Orwell', status: 'Disponível', isAvailable: true }
+                                  ].map((book) => (
+                                    <div key={book.id} className="grid grid-cols-12 text-[5.5px] items-center border-b border-stone-100 py-0.5 hover:bg-stone-50 transition-colors">
+                                      <span className="col-span-1 font-mono text-stone-400">{book.id}</span>
+                                      <span className="col-span-4 font-bold text-stone-800 truncate">{book.title}</span>
+                                      <span className="col-span-3 text-stone-500 truncate">{book.author}</span>
+                                      <span className="col-span-2 text-center">
+                                        <span className={`inline-block px-1 rounded-full text-[4.5px] font-extrabold ${
+                                          book.isAvailable 
+                                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' 
+                                            : 'bg-amber-100 text-amber-800 border border-amber-200'
+                                        }`}>
+                                          {book.status}
+                                        </span>
+                                      </span>
+                                      <span className="col-span-2 text-right flex items-center justify-end gap-0.5">
+                                        {book.isAvailable ? (
+                                          <span className="px-0.5 py-0.2 rounded bg-indigo-50 border border-indigo-200 text-indigo-700 text-[4px] font-bold uppercase cursor-pointer hover:bg-indigo-100">
+                                            Emp.
+                                          </span>
+                                        ) : (
+                                          <span className="px-0.5 py-0.2 rounded bg-stone-100 border border-stone-200 text-stone-600 text-[4px] font-bold uppercase cursor-pointer hover:bg-stone-200">
+                                            Dev.
+                                          </span>
+                                        )}
+                                      </span>
+                                    </div>
+                                  ))}
+                                </div>
+
+                                {/* Status message inside paper */}
+                                <div className="text-[5px] text-stone-400 font-mono italic text-right mt-1 pt-1 border-t border-stone-100 flex items-center justify-between">
+                                  <span>SPA local via localStorage</span>
+                                  <span>Total: 3 livros ativos</span>
+                                </div>
+                              </div>
+
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      {/* Bottom Footer Panel with brown wooden vibe */}
+                      <div className="h-[24px] px-3 py-1 bg-[#1c110a] border-t border-[#2c1d11] flex items-center justify-between relative z-10 text-[5.5px] text-stone-500 font-mono">
+                        <span className="flex items-center gap-1">
+                          <span className="w-1 h-1 rounded-full bg-amber-500 animate-pulse"></span>
+                          ROTEAMENTO SEM RECARGA (SPA)
+                        </span>
+                        <span>DESIGN ULTRA-SIMPLE & FLUÍDO</span>
                       </div>
                     </div>
                   ) : project.id === 'jornada-dev-totvs' ? (

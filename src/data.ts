@@ -99,6 +99,22 @@ export const PROJECTS: Project[] = [
     chatbotUrl: 'https://typebot.co/simulador-de-atendimento-ue57nx5',
     tags: ['Typebot', 'Atendimento Conversacional', 'UX Conversacional', 'Empréstimos'],
     category: 'ia',
+  },
+  {
+    id: 'analise-financeiro',
+    title: 'Análise Financeira: Consultoria de Investimentos 📊💰',
+    description: 'Este projeto visa realizar uma análise detalhada do Índice Bovespa, ajudando investidores a tomar decisões informadas sobre quais ações investir. Utilizamos técnicas de análise exploratória de dados e visualizações em Tableau para apresentar os resultados de forma clara e intuitiva. 📈',
+    githubUrl: 'https://github.com/Savarezi/Analise-Financeiro',
+    tags: ['Tableau', 'Análise Exploratória', 'Dados', 'Finanças', 'Bovespa'],
+    category: 'data',
+  },
+  {
+    id: 'sistema-biblioteca',
+    title: 'Sistema de Gerenciamento de Biblioteca 📚',
+    description: 'Um sistema completo de gerenciamento de livros, usuários e empréstimos, desenvolvido com HTML, CSS e JavaScript Vanilla. Criado com foco em organização, simplicidade e navegação fluida, permitindo controlar toda a biblioteca sem recarregar a página.',
+    githubUrl: 'https://github.com/Savarezi/Sistema-de-Biblioteca',
+    tags: ['HTML5', 'CSS3', 'JavaScript Vanilla', 'Gerenciamento', 'SPA Local'],
+    category: 'fullstack',
   }
 ];
 
