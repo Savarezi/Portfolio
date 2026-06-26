@@ -1,4 +1,5 @@
 import { Project, Experience, EducationCertification, SkillCategory } from './types';
+import porscheDashboardImg from './assets/images/porsche_dashboard_exact_1782431212706.jpg';
 
 export const PERSONAL_INFO = {
   name: 'Patrícia Oliveira',
@@ -22,6 +23,7 @@ export const PROJECTS: Project[] = [
     liveUrl: 'https://porschesalesdashboard.netlify.app/',
     tags: ['GPT Agents', 'Claude Code', 'Excel', 'Data Analytics', 'Dashboards'],
     category: 'ia',
+    imageUrl: porscheDashboardImg,
   },
   {
     id: 'jornada-dev-totvs',

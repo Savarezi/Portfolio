@@ -7,6 +7,7 @@ export interface Project {
   chatbotUrl?: string;
   tags: string[];
   category: 'ia' | 'fullstack' | 'data' | 'cloud';
+  imageUrl?: string;
 }
 
 export interface Experience {
