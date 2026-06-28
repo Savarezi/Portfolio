@@ -1340,6 +1340,87 @@ export default function ProjectsSection() {
                         <span>DESIGN ULTRA-SIMPLE & FLUÍDO</span>
                       </div>
                     </div>
+                  ) : project.id === 'moda-versatil' ? (
+                    <div className="w-full h-full bg-[#fcfaf4] overflow-hidden flex flex-col justify-between font-sans select-none border-b border-[#ebdcb9] relative group">
+                      
+                      {/* Top Bar - Elegant Luxury Header */}
+                      <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#ebdcb9] bg-[#fdfdfc]/90 backdrop-blur-sm relative z-10">
+                        {/* Title & Brand */}
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-serif text-[8.5px] font-bold text-[#2d2215] uppercase tracking-[0.15em]">Moda Versátil</span>
+                        </div>
+                        {/* Status Label */}
+                        <div className="flex items-center gap-1">
+                          <span className="flex items-center gap-0.5 px-1.5 py-0.2 rounded bg-amber-500/10 border border-amber-500/20 text-[5.5px] font-bold text-[#b8860b]">
+                            <span className="w-1 h-1 rounded-full bg-amber-500 animate-pulse"></span>
+                            BOUTIQUE LIVE
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Main Workspace Frame with beautiful grid split */}
+                      <div className="flex-1 p-2.5 grid grid-cols-12 gap-2 relative z-10 overflow-hidden text-left bg-gradient-to-br from-[#fcfbf7] to-[#f7f2e8]">
+                        
+                        {/* Left column: Luxury copy & buttons */}
+                        <div className="col-span-6 flex flex-col justify-between h-full py-0.5">
+                          <div className="space-y-1">
+                            <span className="text-[4.5px] font-mono text-[#a37c3f] tracking-[0.2em] font-extrabold uppercase">
+                              # Curadoria Alta Costura
+                            </span>
+                            <h4 className="font-serif text-[10px] md:text-[11px] font-bold text-[#261f18] leading-tight tracking-tight">
+                              Estilo que se <br />
+                              <span className="italic text-[#a37c3f]">adapta a você.</span>
+                            </h4>
+                            <p className="text-[5.5px] text-[#6e6051] leading-relaxed line-clamp-3">
+                              Peças versáteis, sofisticadas e de curadoria lenta desenvolvidas em linho puro, algodão e seda natural.
+                            </p>
+                          </div>
+
+                          {/* Quick Interactive Badges */}
+                          <div className="space-y-1">
+                            <div className="flex gap-1">
+                              <span className="px-1.5 py-0.5 bg-[#212121] text-white text-[4.5px] font-bold rounded-sm uppercase tracking-wider">
+                                Loja Shein
+                              </span>
+                              <span className="px-1.5 py-0.5 bg-[#25d366]/10 border border-[#25d366]/20 text-[#128c7e] text-[4.5px] font-bold rounded-sm uppercase tracking-wider">
+                                WhatsApp
+                              </span>
+                            </div>
+                            <div className="text-[4.5px] text-[#9c8974] font-mono flex items-center gap-1">
+                              <span className="w-1 h-1 rounded-full bg-[#128c7e]"></span>
+                              FALAR COM PERSONAL STYLIST
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Right column: Beautiful layered image preview */}
+                        <div className="col-span-6 relative flex items-center justify-center">
+                          <div className="relative w-full h-[95%] rounded border border-[#e3d5b5] overflow-hidden bg-[#faf8f5] shadow-[0_4px_12px_rgba(45,34,21,0.12)] group-hover:shadow-[0_8px_18px_rgba(45,34,21,0.18)] transition-all duration-500 scale-95 group-hover:scale-100">
+                            <img 
+                              src={project.imageUrl} 
+                              alt="Moda Versátil Screen preview" 
+                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                              referrerPolicy="no-referrer"
+                            />
+                            {/* Accent bottom plate */}
+                            <div className="absolute bottom-1 left-1 right-1 p-1 bg-black/65 backdrop-blur-sm rounded-sm border border-white/10 text-left">
+                              <p className="text-[4px] font-mono text-stone-400 uppercase tracking-widest">Natural & Elegância</p>
+                              <p className="text-[5px] font-bold text-white tracking-tight">Conjunto de Linho</p>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      {/* Footer Details - Brown fashion board theme */}
+                      <div className="h-[22px] px-3 py-1 bg-[#1c1610] border-t border-[#30261c] flex items-center justify-between relative z-10 text-[5.5px] text-[#9c8670] font-mono">
+                        <span>CONVERSÃO & EXPERIÊNCIA IMERSIVA</span>
+                        <span className="flex items-center gap-1 text-[#c7ab8f]">
+                          <span className="w-1 h-1 rounded-full bg-amber-400 animate-pulse"></span>
+                          PRODUÇÃO NETLIFY
+                        </span>
+                      </div>
+                    </div>
                   ) : project.id === 'jornada-dev-totvs' ? (
                     <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-500">
                       <img 
