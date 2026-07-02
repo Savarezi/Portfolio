@@ -5,6 +5,45 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Overriding Tailwind Purple colors to Luxurious Gold tones */
+  --color-purple-50: #fffdf5;
+  --color-purple-100: #fef7db;
+  --color-purple-200: #faebba;
+  --color-purple-300: #f3d88e;
+  --color-purple-400: #caa653;
+  --color-purple-500: #d4af37; /* Metallic Gold */
+  --color-purple-600: #b8860b; /* Dark Goldenrod */
+  --color-purple-700: #996e08;
+  --color-purple-800: #7a5406;
+  --color-purple-900: #5c3d03;
+  --color-purple-950: #231801;
+
+  /* Overriding Tailwind Emerald/Green to Golden Brass / Antique tones */
+  --color-emerald-50: #fffdf7;
+  --color-emerald-100: #fffbeb;
+  --color-emerald-200: #fcf3cc;
+  --color-emerald-300: #f5e4a3;
+  --color-emerald-400: #e8cd75;
+  --color-emerald-500: #caa63c; /* Brass/Antique Gold */
+  --color-emerald-600: #aa852a;
+  --color-emerald-700: #88651c;
+  --color-emerald-800: #664811;
+  --color-emerald-900: #4a3209;
+  --color-emerald-950: #2b1c03;
+
+  /* Overriding Tailwind Indigo to metallic gold-bronze tones */
+  --color-indigo-50: #fffdfa;
+  --color-indigo-100: #fef8f0;
+  --color-indigo-200: #fdeddc;
+  --color-indigo-300: #fadabc;
+  --color-indigo-400: #f3be8f;
+  --color-indigo-500: #e29f65;
+  --color-indigo-600: #c27f49;
+  --color-indigo-700: #9e6033;
+  --color-indigo-800: #7d4422;
+  --color-indigo-900: #5e2f15;
+  --color-indigo-950: #331608;
 }
 
 @layer base {
@@ -20,24 +59,90 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #080b11;
+  background: #050505;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #222222;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a855f7;
+  background: #d4af37;
 }
 
 /* ==========================================
-   REFINE LIGHT THEME OVERRIDES (CLEAN & MINIMAL)
+   DARK THEME OVERRIDES (BLACK, CHARCOAL & GOLD)
+   ========================================== */
+.theme-dark {
+  background-color: #000000 !important;
+  color: #f5f5f5 !important;
+}
+
+/* Base background overrides */
+.bg-\[\#030712\] {
+  background-color: #020202 !important;
+}
+.bg-\[\#0b0f19\] {
+  background-color: #0b0b0b !important;
+}
+.bg-\[\#0b0f19\]\/60 {
+  background-color: rgba(11, 11, 11, 0.72) !important;
+}
+.bg-\[\#080b11\] {
+  background-color: #060606 !important;
+}
+.bg-zinc-950\/20 {
+  background-color: rgba(5, 5, 5, 0.3) !important;
+}
+.bg-zinc-950\/40 {
+  background-color: rgba(5, 5, 5, 0.5) !important;
+}
+.bg-zinc-950\/50 {
+  background-color: rgba(5, 5, 5, 0.6) !important;
+}
+.bg-zinc-950\/70 {
+  background-color: rgba(5, 5, 5, 0.8) !important;
+}
+.bg-zinc-900\/40 {
+  background-color: rgba(15, 15, 15, 0.4) !important;
+}
+.bg-zinc-900\/60 {
+  background-color: rgba(15, 15, 15, 0.6) !important;
+}
+
+/* Refine borders to be warm charcoal / subtle gold-tinted charcoal instead of slate blue */
+.border-\[\#1e293b\] {
+  border-color: #1a1917 !important; /* Gold-tinted dark charcoal */
+}
+.border-zinc-800 {
+  border-color: #1c1c1c !important;
+}
+.border-zinc-800\/40 {
+  border-color: rgba(28, 28, 28, 0.4) !important;
+}
+.border-zinc-800\/60 {
+  border-color: rgba(28, 28, 28, 0.6) !important;
+}
+.border-zinc-800\/80 {
+  border-color: rgba(28, 28, 28, 0.8) !important;
+}
+.border-zinc-700\/80 {
+  border-color: rgba(45, 45, 45, 0.8) !important;
+}
+.border-zinc-900 {
+  border-color: #121212 !important;
+}
+.border-zinc-900\/60 {
+  border-color: rgba(18, 18, 18, 0.6) !important;
+}
+
+/* ==========================================
+   REFINE LIGHT THEME OVERRIDES (CLEAN & MINIMAL ALABASTER / GOLD)
    ========================================== */
 .theme-light {
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
+  background-color: #fbfaf7 !important;
+  color: #121212 !important;
 }
 
 /* Base background overrides */
@@ -53,45 +158,52 @@
 }
 
 .theme-light #profile-hero-card {
-  background-color: rgba(248, 250, 252, 0.7) !important;
+  background-color: rgba(251, 250, 247, 0.8) !important;
+  border-color: #e5dec9 !important; /* Gold/brass tinted light border */
 }
 
 .theme-light #stats-dashboard-bento > div {
-  background-color: rgba(248, 250, 252, 0.8) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: #e5dec9 !important;
+}
+
+.theme-light #mission-card {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: #e5dec9 !important;
 }
 
 .theme-light #main-portfolio-root {
-  background-color: #f8fafc !important;
+  background-color: #fbfaf7 !important;
 }
 
 /* Custom inline hex colors map to light mode values */
-.theme-light .bg-\[\#030712\] { background-color: #f8fafc !important; }
+.theme-light .bg-\[\#030712\] { background-color: #fbfaf7 !important; }
 .theme-light .bg-\[\#0b0f19\] { background-color: #ffffff !important; }
-.theme-light .bg-\[\#0b0f19\]\/60 { background-color: rgba(255, 255, 255, 0.95) !important; }
+.theme-light .bg-\[\#0b0f19\]\/60 { background-color: rgba(255, 255, 255, 0.96) !important; }
 .theme-light .bg-\[\#080b11\] { background-color: #ffffff !important; }
-.theme-light .bg-zinc-950\/20 { background-color: rgba(241, 245, 249, 0.5) !important; }
-.theme-light .bg-zinc-950\/40 { background-color: rgba(241, 245, 249, 0.7) !important; }
-.theme-light .bg-zinc-950\/50 { background-color: #f1f5f9 !important; }
-.theme-light .bg-zinc-950\/70 { background-color: #f8fafc !important; }
-.theme-light .bg-zinc-900\/40 { background-color: #f1f5f9 !important; }
-.theme-light .bg-zinc-900\/60 { background-color: #f1f5f9 !important; }
-.theme-light .bg-zinc-900 { background-color: #f1f5f9 !important; }
-.theme-light .hover\:bg-zinc-800:hover { background-color: #e2e8f0 !important; }
+.theme-light .bg-zinc-950\/20 { background-color: rgba(245, 242, 235, 0.5) !important; }
+.theme-light .bg-zinc-950\/40 { background-color: rgba(245, 242, 235, 0.7) !important; }
+.theme-light .bg-zinc-950\/50 { background-color: #f5f2eb !important; }
+.theme-light .bg-zinc-950\/70 { background-color: #fbfaf7 !important; }
+.theme-light .bg-zinc-900\/40 { background-color: #f5f2eb !important; }
+.theme-light .bg-zinc-900\/60 { background-color: #f5f2eb !important; }
+.theme-light .bg-zinc-900 { background-color: #f5f2eb !important; }
+.theme-light .hover\:bg-zinc-800:hover { background-color: #e5dec9 !important; }
 
 /* Text colors overrides for contrast */
 .theme-light .text-white,
 .theme-light .text-zinc-100,
 .theme-light .text-zinc-200,
 .theme-light .text-zinc-300 {
-  color: #0f172a !important;
+  color: #121212 !important;
 }
 
 .theme-light .text-zinc-400 {
-  color: #334155 !important;
+  color: #4a4338 !important; /* Soft brown-charcoal */
 }
 
 .theme-light .text-zinc-500 {
-  color: #64748b !important;
+  color: #70685c !important;
 }
 
 /* Border overrides */
@@ -103,32 +215,32 @@
 .theme-light .border-zinc-900,
 .theme-light .border-zinc-900\/60,
 .theme-light .border-\[\#1e293b\] {
-  border-color: #cbd5e1 !important;
+  border-color: #e5dec9 !important; /* Soft brass/gold borders */
 }
 
 /* Chatbot styling inside light mode */
 .theme-light #recruiter-chatbot-modal,
 .theme-light #recruiter-chatbot-bubble {
   background-color: #ffffff !important;
-  color: #0f172a !important;
-  border-color: #cbd5e1 !important;
+  color: #121212 !important;
+  border-color: #e5dec9 !important;
 }
 
 .theme-light #recruiter-chatbot-modal input,
 .theme-light #recruiter-chatbot-modal textarea {
-  background-color: #f1f5f9 !important;
-  color: #0f172a !important;
-  border-color: #cbd5e1 !important;
+  background-color: #fbfaf7 !important;
+  color: #121212 !important;
+  border-color: #e5dec9 !important;
 }
 
 .theme-light #recruiter-chatbot-modal .messages-container .message-bot {
-  background-color: #f1f5f9 !important;
-  color: #0f172a !important;
+  background-color: #f5f2eb !important;
+  color: #121212 !important;
 }
 
 .theme-light #recruiter-chatbot-modal .messages-container .message-user {
-  background-color: #7c3aed !important;
-  color: #ffffff !important;
+  background-color: #d4af37 !important; /* Gold */
+  color: #000000 !important;
 }
 
 

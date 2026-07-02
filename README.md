@@ -2,7 +2,7 @@
 
 Seja muito bem-vindo ao portfólio profissional de **Patrícia Oliveira**. Este projeto representa um ecossistema interativo de ponta, focado na exibição de competências em Desenvolvimento de Software, Cloud Computing (AWS), Inteligência Artificial (Typebot) e Desenvolvimento SaaS.
 
-
+![Banner IA de Recrutamento](src/assets/images/ai_portfolio_banner_1781867191698.jpg)
 
 ---
 

@@ -25,8 +25,8 @@ export default function StarfieldBackground() {
     let animationFrameId: number;
     let stars: Star[] = [];
     const colors = [
-      'rgba(168, 85, 247, ', // purple
-      'rgba(16, 185, 129, ', // emerald
+      'rgba(212, 175, 55, ', // gold-shimmer
+      'rgba(184, 134, 11, ', // dark-gold-shimmer
       'rgba(255, 255, 255, ', // silver-shimmer
       'rgba(226, 232, 240, ', // silver-light
     ];
