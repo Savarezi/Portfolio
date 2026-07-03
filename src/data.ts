@@ -1,6 +1,5 @@
 import { Project, Experience, EducationCertification, SkillCategory } from './types';
 import porscheDashboardImg from './assets/images/porsche_dashboard_exact_1782431212706.jpg';
-import modaVersatilImg from './assets/images/md.png';
 
 export const PERSONAL_INFO = {
   name: 'Patrícia Oliveira',
@@ -123,7 +122,6 @@ export const PROJECTS: Project[] = [
     description: 'Uma plataforma digital de alta-costura interativa desenvolvida com tecnologia moderna e foco em conversão e experiência do usuário (UX/UI). Este projeto apresenta o catálogo de vestuário fino e acessórios de luxo da Moda Versátil, integrando recursos dinâmicos e experiências imersivas de estilo.',
     githubUrl: 'https://github.com/Savarezi/Moda-Versartil',
     liveUrl: 'https://modaversatil.netlify.app/',
-    imageUrl: modaVersatilImg,
     tags: ['React', 'JavaScript', 'E-Commerce', 'Tailwind CSS', 'Alta Costura', 'UX/UI'],
     category: 'fullstack',
   }

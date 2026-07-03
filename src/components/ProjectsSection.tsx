@@ -1393,14 +1393,16 @@ export default function ProjectsSection() {
                           </div>
                         </div>
 
-                        {/* Right column: Beautiful layered image preview */}
+                        {/* Right column: Beautiful layered video preview */}
                         <div className="col-span-6 relative flex items-center justify-center">
                           <div className="relative w-full h-[95%] rounded border border-[#e3d5b5] overflow-hidden bg-[#faf8f5] shadow-[0_4px_12px_rgba(45,34,21,0.12)] group-hover:shadow-[0_8px_18px_rgba(45,34,21,0.18)] transition-all duration-500 scale-95 group-hover:scale-100">
-                            <img 
-                              src={project.imageUrl} 
-                              alt="Moda Versátil Screen preview" 
-                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                              referrerPolicy="no-referrer"
+                            <video 
+                              src="/videos/video_moda_versatil.mp4" 
+                              autoPlay 
+                              loop 
+                              muted 
+                              playsInline 
+                              className="w-full h-full object-cover"
                             />
                             {/* Accent bottom plate */}
                             <div className="absolute bottom-1 left-1 right-1 p-1 bg-black/65 backdrop-blur-sm rounded-sm border border-white/10 text-left">
