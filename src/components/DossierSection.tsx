@@ -15,7 +15,6 @@ import {
   ExternalLink
 } from 'lucide-react';
 import Markdown from 'react-markdown';
-import confetti from 'canvas-confetti';
 
 interface ProjectFit {
   name: string;
@@ -219,38 +218,7 @@ export default function DossierSection() {
   }, [loading]);
 
   const triggerCelebration = (score: number) => {
-    const colors = ['#a855f7', '#10b981', '#e2e8f0', '#c084fc'];
-    
-    // Left-side burst
-    confetti({
-      particleCount: 80,
-      angle: 60,
-      spread: 65,
-      origin: { x: 0.1, y: 0.8 },
-      colors
-    });
-
-    // Right-side burst
-    confetti({
-      particleCount: 80,
-      angle: 120,
-      spread: 65,
-      origin: { x: 0.9, y: 0.8 },
-      colors
-    });
-
-    // Central splash if score is exceptional
-    if (score >= 80) {
-      setTimeout(() => {
-        confetti({
-          particleCount: 50,
-          angle: 90,
-          spread: 85,
-          origin: { x: 0.5, y: 0.5 },
-          colors
-        });
-      }, 350);
-    }
+    // Confetti effect has been removed per user instructions
   };
 
   const handleAnalyze = async (e: React.FormEvent) => {

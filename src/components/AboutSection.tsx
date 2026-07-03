@@ -16,7 +16,7 @@ import {
   RefreshCw,
   Loader2
 } from 'lucide-react';
-import { PERSONAL_INFO } from '../data';
+import { PERSONAL_INFO, PROJECTS, SKILL_CATEGORIES, EDUCATION_CERTS } from '../data';
 import Markdown from 'react-markdown';
 
 const FALLBACK_MARKDOWN_CV = `# PATRÍCIA OLIVEIRA
@@ -168,10 +168,32 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
     }
   }, [notification]);
 
+  const projectsCount = PROJECTS.length;
+  const totalSkills = SKILL_CATEGORIES.reduce((acc, cat) => acc + cat.skills.length, 0);
+  const totalCertHours = EDUCATION_CERTS.reduce((acc, cert) => {
+    const match = cert.title.match(/(\d+)h/);
+    return acc + (match ? parseInt(match[1], 10) : 0);
+  }, 0);
+
   const stats = [
-    { value: '+8', label: 'Projetos e Aplicações', desc: 'Integrações em IA, Finanças e SaaS', icon: Code },
-    { value: '+15', label: 'Tecnologias Dominadas', desc: 'Typebot, Python, Cloud & JS', icon: Wrench },
-    { value: '100h+', label: 'Mentorias & Soluções', desc: 'Sistemas inteligentes orientados a resultados', icon: Cpu }
+    { 
+      value: `+${projectsCount}`, 
+      label: 'Projetos e Aplicações', 
+      desc: 'Integrações em IA, Finanças e SaaS', 
+      icon: Code 
+    },
+    { 
+      value: `+${totalSkills}`, 
+      label: 'Tecnologias Dominadas', 
+      desc: 'Typebot, Python, Cloud & JS', 
+      icon: Wrench 
+    },
+    { 
+      value: `${totalCertHours > 0 ? totalCertHours : 100}h+`, 
+      label: 'Mentorias & Soluções', 
+      desc: 'Sistemas inteligentes orientados a resultados', 
+      icon: Cpu 
+    }
   ];
 
   // Robust CV generation method utilizing Gemini 3.5 with instantaneous premium fallback on any issue

@@ -15,7 +15,6 @@ import {
   Bot,
   Sun,
   Moon,
-  Compass,
   Sparkles
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data';
@@ -28,7 +27,6 @@ interface SidebarProps {
   onOpenRecruiterBot: () => void;
   theme: 'dark' | 'light';
   toggleTheme: () => void;
-  onStartTour: () => void;
 }
 
 export default function Sidebar({ 
@@ -38,8 +36,7 @@ export default function Sidebar({
   setCollapsed,
   onOpenRecruiterBot,
   theme,
-  toggleTheme,
-  onStartTour
+  toggleTheme
 }: SidebarProps) {
   
   const menuItems = [
@@ -160,16 +157,6 @@ export default function Sidebar({
             title={theme === 'dark' ? "Ativar Modo Claro" : "Ativar Modo Escuro"}
           >
             {theme === 'dark' ? <Sun className="h-4.5 w-4.5 text-amber-400" /> : <Moon className="h-4.5 w-4.5 text-slate-500" />}
-          </button>
-
-          {/* Guided Tour button */}
-          <button
-            onClick={onStartTour}
-            id="sidebar-tour-btn"
-            className="h-9 w-9 flex items-center justify-center rounded-lg bg-zinc-900 hover:bg-zinc-800 text-purple-400 transition-colors cursor-pointer"
-            title="Reativar Tour Guiado"
-          >
-            <Compass className="h-4.5 w-4.5" />
           </button>
           
           {/* Collapse Trigger Button inside sidebar footer matching Gustavo's Layout */}

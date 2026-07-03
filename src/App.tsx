@@ -13,7 +13,6 @@ import {
   Bot,
   Sun,
   Moon,
-  Compass,
   Sparkles
 } from 'lucide-react';
 import Sidebar from './components/Sidebar';
@@ -23,7 +22,6 @@ import ProjectsSection from './components/ProjectsSection';
 import SkillsSection from './components/SkillsSection';
 import EducationSection from './components/EducationSection';
 import FloatingBot from './components/FloatingBot';
-import OnboardingTour from './components/OnboardingTour';
 import StarfieldBackground from './components/StarfieldBackground';
 import DossierSection from './components/DossierSection';
 import { PERSONAL_INFO } from './data';
@@ -35,17 +33,6 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [recruiterWidgetOpen, setRecruiterWidgetOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-  const [tourOpen, setTourOpen] = useState(false);
-
-  useEffect(() => {
-    const hasSeenTour = localStorage.getItem('hasSeenPortfolioTour_v1');
-    if (!hasSeenTour) {
-      const timer = setTimeout(() => {
-        setTourOpen(true);
-      }, 1500);
-      return () => clearTimeout(timer);
-    }
-  }, []);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
@@ -99,7 +86,6 @@ export default function App() {
         onOpenRecruiterBot={handleOpenRecruiterWidget}
         theme={theme}
         toggleTheme={toggleTheme}
-        onStartTour={() => setTourOpen(true)}
       />
 
       {/* 2. RESPONSIVE MOBILE NAVIGATION HEADER */}
@@ -112,14 +98,6 @@ export default function App() {
         </div>
         
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => setTourOpen(true)}
-            className="p-2 bg-zinc-900 rounded-lg text-purple-400 hover:bg-zinc-800 transition-colors cursor-pointer"
-            title="Iniciar Tour Guiado"
-            id="mobile-tour-trigger-btn"
-          >
-            <Compass className="h-4.5 w-4.5" />
-          </button>
           <button
             onClick={toggleTheme}
             className="p-2 bg-zinc-900 rounded-lg text-amber-400 hover:bg-zinc-800 transition-colors cursor-pointer"
@@ -194,17 +172,6 @@ export default function App() {
                  <Bot className="h-5.5 w-5.5 flex-shrink-0 text-emerald-400" />
                  <span>Entrevistar via IA (Patricia)</span>
                </button>
-
-               <button
-                 onClick={() => {
-                   setMobileMenuOpen(false);
-                   setTourOpen(true);
-                 }}
-                 className="flex items-center gap-4 px-5 py-4 rounded-xl text-base font-semibold text-purple-400 hover:text-purple-300 hover:bg-purple-950/20 border border-dashed border-purple-500/20 w-full transition-all cursor-pointer"
-               >
-                 <Compass className="h-5.5 w-5.5 flex-shrink-0 text-purple-400 animate-pulse" />
-                 <span>Tour do Portfólio 🧭</span>
-               </button>
              </nav>
 
             {/* Footer row contacts inside mobile dropdown */}
@@ -272,15 +239,6 @@ export default function App() {
 
       {/* FLOATING CORNER INTERACTIVE RECRUITING ASSISTANT CHATBOT */}
       <FloatingBot isOpen={recruiterWidgetOpen} setIsOpen={setRecruiterWidgetOpen} />
-      
-      {/* ONBOARDING FLOW */}
-      <OnboardingTour
-        isOpen={tourOpen}
-        onClose={() => setTourOpen(false)}
-        setActiveTab={setActiveTab}
-        setMobileMenuOpen={setMobileMenuOpen}
-        onOpenRecruiterBot={handleOpenRecruiterWidget}
-      />
       
     </div>
   );
