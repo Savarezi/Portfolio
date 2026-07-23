@@ -6,40 +6,40 @@
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  /* Overriding Tailwind Purple colors to Luxurious Gold tones */
+  /* Luxurious Satin Chic Gold tones (#d4af37 / #e5c158) */
   --color-purple-50: #fffdf5;
   --color-purple-100: #fef7db;
   --color-purple-200: #faebba;
   --color-purple-300: #f3d88e;
-  --color-purple-400: #caa653;
+  --color-purple-400: #e5c158; /* Satin Chic Gold */
   --color-purple-500: #d4af37; /* Metallic Gold */
-  --color-purple-600: #b8860b; /* Dark Goldenrod */
-  --color-purple-700: #996e08;
-  --color-purple-800: #7a5406;
-  --color-purple-900: #5c3d03;
-  --color-purple-950: #231801;
+  --color-purple-600: #c29b28; /* Dark Goldenrod */
+  --color-purple-700: #a37f1a;
+  --color-purple-800: #80620f;
+  --color-purple-900: #5c4505;
+  --color-purple-950: #2b2002;
 
-  /* Overriding Tailwind Emerald/Green to Golden Brass / Antique tones */
+  /* Emerald map to Satin Chic Gold accents */
   --color-emerald-50: #fffdf7;
   --color-emerald-100: #fffbeb;
   --color-emerald-200: #fcf3cc;
   --color-emerald-300: #f5e4a3;
-  --color-emerald-400: #e8cd75;
-  --color-emerald-500: #caa63c; /* Brass/Antique Gold */
-  --color-emerald-600: #aa852a;
+  --color-emerald-400: #e5c158;
+  --color-emerald-500: #d4af37;
+  --color-emerald-600: #c29b28;
   --color-emerald-700: #88651c;
   --color-emerald-800: #664811;
   --color-emerald-900: #4a3209;
   --color-emerald-950: #2b1c03;
 
-  /* Overriding Tailwind Indigo to metallic gold-bronze tones */
+  /* Indigo map to metallic gold-bronze tones */
   --color-indigo-50: #fffdfa;
   --color-indigo-100: #fef8f0;
   --color-indigo-200: #fdeddc;
   --color-indigo-300: #fadabc;
   --color-indigo-400: #f3be8f;
-  --color-indigo-500: #e29f65;
-  --color-indigo-600: #c27f49;
+  --color-indigo-500: #d4af37;
+  --color-indigo-600: #c29b28;
   --color-indigo-700: #9e6033;
   --color-indigo-800: #7d4422;
   --color-indigo-900: #5e2f15;
@@ -63,7 +63,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222222;
+  background: rgba(212, 175, 55, 0.3);
   border-radius: 9999px;
 }
 
@@ -71,81 +71,110 @@
   background: #d4af37;
 }
 
+/* White Frost Glassmorphism & Satin Chic Gold Utilities */
+.glass-frost {
+  background-color: rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+}
+
+.glass-frost-card {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.glass-frost-card:hover {
+  border-color: rgba(212, 175, 55, 0.6) !important;
+  box-shadow: 0 8px 32px 0 rgba(212, 175, 55, 0.18) !important;
+}
+
 /* ==========================================
-   DARK THEME OVERRIDES (BLACK, CHARCOAL & GOLD)
+   DARK THEME OVERRIDES (WHITE FROST GLASS & CHIC GOLD)
    ========================================== */
 .theme-dark {
-  background-color: #000000 !important;
-  color: #f5f5f5 !important;
+  background-color: #050505 !important;
+  color: #ffffff !important;
 }
 
-/* Base background overrides */
+/* Base background overrides for glass panels */
 .bg-\[\#030712\] {
-  background-color: #020202 !important;
-}
-.bg-\[\#0b0f19\] {
-  background-color: #0b0b0b !important;
-}
-.bg-\[\#0b0f19\]\/60 {
-  background-color: rgba(11, 11, 11, 0.72) !important;
-}
-.bg-\[\#080b11\] {
-  background-color: #060606 !important;
-}
-.bg-zinc-950\/20 {
-  background-color: rgba(5, 5, 5, 0.3) !important;
-}
-.bg-zinc-950\/40 {
-  background-color: rgba(5, 5, 5, 0.5) !important;
-}
-.bg-zinc-950\/50 {
-  background-color: rgba(5, 5, 5, 0.6) !important;
-}
-.bg-zinc-950\/70 {
-  background-color: rgba(5, 5, 5, 0.8) !important;
-}
-.bg-zinc-900\/40 {
-  background-color: rgba(15, 15, 15, 0.4) !important;
-}
-.bg-zinc-900\/60 {
-  background-color: rgba(15, 15, 15, 0.6) !important;
+  background-color: #050505 !important;
 }
 
-/* Refine borders to be warm charcoal / subtle gold-tinted charcoal instead of slate blue */
-.border-\[\#1e293b\] {
-  border-color: #1a1917 !important; /* Gold-tinted dark charcoal */
+.bg-\[\#0b0f19\],
+.bg-\[\#080b11\] {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
 }
-.border-zinc-800 {
-  border-color: #1c1c1c !important;
+
+.bg-\[\#0b0f19\]\/60,
+.bg-zinc-950\/40,
+.bg-zinc-950\/50,
+.bg-zinc-950\/60,
+.bg-zinc-950\/70,
+.bg-zinc-950\/80,
+.bg-zinc-900\/40,
+.bg-zinc-900\/60,
+.bg-zinc-900 {
+  background-color: rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
 }
-.border-zinc-800\/40 {
-  border-color: rgba(28, 28, 28, 0.4) !important;
-}
-.border-zinc-800\/60 {
-  border-color: rgba(28, 28, 28, 0.6) !important;
-}
-.border-zinc-800\/80 {
-  border-color: rgba(28, 28, 28, 0.8) !important;
-}
-.border-zinc-700\/80 {
-  border-color: rgba(45, 45, 45, 0.8) !important;
-}
-.border-zinc-900 {
-  border-color: #121212 !important;
-}
+
+/* Metallic Satin Chic Gold Borders */
+.border-\[\#1e293b\],
+.border-zinc-800,
+.border-zinc-800\/40,
+.border-zinc-800\/60,
+.border-zinc-800\/80,
+.border-zinc-700\/80,
+.border-zinc-900,
 .border-zinc-900\/60 {
-  border-color: rgba(18, 18, 18, 0.6) !important;
+  border-color: rgba(212, 175, 55, 0.35) !important;
+}
+
+/* Hover border highlight */
+.hover\:border-purple-500\/20:hover,
+.hover\:border-purple-500\/30:hover,
+.hover\:border-[#d4af37]\/50:hover {
+  border-color: rgba(212, 175, 55, 0.65) !important;
+}
+
+/* Gold Accent Text & Icons */
+.text-purple-400,
+.text-emerald-400,
+.text-amber-400 {
+  color: #e5c158 !important; /* Satin Chic Gold */
+}
+
+/* Buttons and Badge Highlights */
+.bg-purple-600 {
+  background-color: #d4af37 !important;
+  color: #000000 !important;
+  font-weight: 600;
+}
+.bg-purple-600:hover {
+  background-color: #e5c158 !important;
+}
+
+.bg-purple-950\/40 {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(212, 175, 55, 0.4) !important;
 }
 
 /* ==========================================
-   REFINE LIGHT THEME OVERRIDES (CLEAN & MINIMAL ALABASTER / GOLD)
+   REFINE LIGHT THEME OVERRIDES
    ========================================== */
 .theme-light {
   background-color: #fbfaf7 !important;
   color: #121212 !important;
 }
 
-/* Base background overrides */
 .theme-light, 
 .theme-light #portfolio-sidebar,
 .theme-light #mobile-navigation-bar,
@@ -154,43 +183,16 @@
 .theme-light #mission-card,
 .theme-light #profile-hero-card,
 .theme-light footer {
-  background-color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
 }
 
-.theme-light #profile-hero-card {
-  background-color: rgba(251, 250, 247, 0.8) !important;
-  border-color: #e5dec9 !important; /* Gold/brass tinted light border */
-}
-
-.theme-light #stats-dashboard-bento > div {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  border-color: #e5dec9 !important;
-}
-
+.theme-light #profile-hero-card,
+.theme-light #stats-dashboard-bento > div,
 .theme-light #mission-card {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  border-color: #e5dec9 !important;
+  border-color: rgba(212, 175, 55, 0.4) !important;
 }
 
-.theme-light #main-portfolio-root {
-  background-color: #fbfaf7 !important;
-}
-
-/* Custom inline hex colors map to light mode values */
-.theme-light .bg-\[\#030712\] { background-color: #fbfaf7 !important; }
-.theme-light .bg-\[\#0b0f19\] { background-color: #ffffff !important; }
-.theme-light .bg-\[\#0b0f19\]\/60 { background-color: rgba(255, 255, 255, 0.96) !important; }
-.theme-light .bg-\[\#080b11\] { background-color: #ffffff !important; }
-.theme-light .bg-zinc-950\/20 { background-color: rgba(245, 242, 235, 0.5) !important; }
-.theme-light .bg-zinc-950\/40 { background-color: rgba(245, 242, 235, 0.7) !important; }
-.theme-light .bg-zinc-950\/50 { background-color: #f5f2eb !important; }
-.theme-light .bg-zinc-950\/70 { background-color: #fbfaf7 !important; }
-.theme-light .bg-zinc-900\/40 { background-color: #f5f2eb !important; }
-.theme-light .bg-zinc-900\/60 { background-color: #f5f2eb !important; }
-.theme-light .bg-zinc-900 { background-color: #f5f2eb !important; }
-.theme-light .hover\:bg-zinc-800:hover { background-color: #e5dec9 !important; }
-
-/* Text colors overrides for contrast */
 .theme-light .text-white,
 .theme-light .text-zinc-100,
 .theme-light .text-zinc-200,
@@ -199,48 +201,12 @@
 }
 
 .theme-light .text-zinc-400 {
-  color: #4a4338 !important; /* Soft brown-charcoal */
+  color: #4a4338 !important;
 }
 
 .theme-light .text-zinc-500 {
   color: #70685c !important;
 }
 
-/* Border overrides */
-.theme-light .border-zinc-800,
-.theme-light .border-zinc-800\/40,
-.theme-light .border-zinc-800\/60,
-.theme-light .border-zinc-800\/80,
-.theme-light .border-zinc-700\/80,
-.theme-light .border-zinc-900,
-.theme-light .border-zinc-900\/60,
-.theme-light .border-\[\#1e293b\] {
-  border-color: #e5dec9 !important; /* Soft brass/gold borders */
-}
-
-/* Chatbot styling inside light mode */
-.theme-light #recruiter-chatbot-modal,
-.theme-light #recruiter-chatbot-bubble {
-  background-color: #ffffff !important;
-  color: #121212 !important;
-  border-color: #e5dec9 !important;
-}
-
-.theme-light #recruiter-chatbot-modal input,
-.theme-light #recruiter-chatbot-modal textarea {
-  background-color: #fbfaf7 !important;
-  color: #121212 !important;
-  border-color: #e5dec9 !important;
-}
-
-.theme-light #recruiter-chatbot-modal .messages-container .message-bot {
-  background-color: #f5f2eb !important;
-  color: #121212 !important;
-}
-
-.theme-light #recruiter-chatbot-modal .messages-container .message-user {
-  background-color: #d4af37 !important; /* Gold */
-  color: #000000 !important;
-}
 
 

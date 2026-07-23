@@ -417,26 +417,26 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
     <div className="space-y-12 animate-fade-in" id="about-section-container">
       {/* Top Banner Cover Block */}
       <section 
-        className="relative bg-zinc-950/40 rounded-3xl border border-[#1e293b] p-8 md:p-12 overflow-hidden flex flex-col md:flex-row gap-8 md:items-center shadow-[0_0_50px_rgba(168,85,247,0.02)]"
+        className="relative bg-white/[0.07] backdrop-blur-xl rounded-3xl border border-[#d4af37]/35 p-8 md:p-12 overflow-hidden flex flex-col md:flex-row gap-8 md:items-center shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
         id="profile-hero-card"
       >
         {/* Subtle grid background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293708_1px,transparent_1px),linear-gradient(to_bottom,#1f293708_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
         
-        {/* Glowing background blob */}
-        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-purple-600/10 blur-3xl pointer-events-none" />
+        {/* Glowing background blob in gold */}
+        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#d4af37]/10 blur-3xl pointer-events-none" />
         
-        {/* Profile Avatar Frame with glowing purple border */}
+        {/* Profile Avatar Frame with glowing gold border */}
         <div className="relative flex-shrink-0 mx-auto md:mx-0">
-          <div className="relative h-44 w-44 rounded-2xl overflow-hidden border-2 border-purple-500/40 shadow-[0_0_30px_rgba(168,85,247,0.2)]">
+          <div className="relative h-44 w-44 rounded-2xl overflow-hidden border-2 border-[#d4af37]/60 shadow-[0_0_25px_rgba(212,175,55,0.25)]">
             <img 
               src={PERSONAL_INFO.avatarUrl} 
               alt={PERSONAL_INFO.name} 
               referrerPolicy="no-referrer"
-              className="h-full w-full object-cover grayscale-[15%] hover:scale-105 transition-transform duration-500"
+              className="h-full w-full object-cover grayscale-[10%] hover:scale-105 transition-transform duration-500"
             />
           </div>
-          <div className="absolute -bottom-2 -right-2 bg-purple-600 text-white rounded-lg p-2 shadow-lg">
+          <div className="absolute -bottom-2 -right-2 bg-[#d4af37] text-black rounded-lg p-2 shadow-lg">
             <Bot className="h-4 w-4" />
           </div>
         </div>
@@ -447,12 +447,12 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
             <h1 className="font-display font-bold text-3xl md:text-5xl text-white tracking-tight">
               {PERSONAL_INFO.name}
             </h1>
-            <p className="text-purple-400 font-medium text-sm md:text-base font-display min-h-[3rem] sm:min-h-[2rem] md:min-h-[1.75rem]">
+            <p className="text-[#e5c158] font-medium text-sm md:text-base font-display min-h-[3rem] sm:min-h-[2rem] md:min-h-[1.75rem]">
               <Typewriter text={PERSONAL_INFO.title} speed={15} delay={100} />
             </p>
           </div>
           
-          <p className="text-zinc-400 font-sans text-sm md:text-base leading-relaxed max-w-2xl min-h-[8rem] sm:min-h-[6rem] md:min-h-[4.5rem]">
+          <p className="text-zinc-300 font-sans text-sm md:text-base leading-relaxed max-w-2xl min-h-[8rem] sm:min-h-[6rem] md:min-h-[4.5rem]">
             <Typewriter text={PERSONAL_INFO.bio} speed={8} delay={1400} />
           </p>
 
@@ -461,19 +461,19 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
             <button
               onClick={handleOpenCvModal}
               id="generate-cv-trigger"
-              className="flex items-center gap-2.5 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-medium rounded-xl shadow-[0_4px_20px_rgba(168,85,247,0.3)] hover:shadow-[0_4px_25px_rgba(168,85,247,0.5)] transition-all transform hover:-translate-y-0.5"
+              className="flex items-center gap-2.5 px-6 py-3 bg-gradient-to-r from-[#d4af37] to-[#b8860b] hover:from-[#e5c158] hover:to-[#d4af37] text-black font-semibold rounded-xl shadow-[0_4px_20px_rgba(212,175,55,0.3)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.5)] transition-all transform hover:-translate-y-0.5 cursor-pointer"
             >
-              <Sparkles className="h-5 w-5" />
+              <Sparkles className="h-5 w-5 text-black" />
               <span>Gerar Currículo (IA)</span>
             </button>
 
             <button
               onClick={onNavigateToProjects}
               id="navigate-projects-btn"
-              className="flex items-center gap-2 px-5 py-3 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-medium rounded-xl border border-zinc-800 transition-all"
+              className="flex items-center gap-2 px-5 py-3 bg-white/10 hover:bg-white/15 text-white font-medium rounded-xl border border-[#d4af37]/35 hover:border-[#d4af37]/60 transition-all cursor-pointer backdrop-blur-md"
             >
               <span>Ver Portfólio</span>
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 text-[#e5c158]" />
             </button>
           </div>
         </div>
@@ -486,9 +486,9 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
           return (
             <div 
               key={idx}
-              className="relative p-6 bg-[#0b0f19]/60 border border-[#1e293b] rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 group shadow-md"
+              className="relative p-6 bg-white/[0.06] backdrop-blur-md border border-[#d4af37]/30 rounded-2xl overflow-hidden hover:border-[#d4af37]/60 hover:shadow-[0_8px_25px_rgba(212,175,55,0.12)] transition-all duration-300 group"
             >
-              <div className="absolute top-4 right-4 text-purple-600/20 group-hover:text-purple-500/20 transition-colors">
+              <div className="absolute top-4 right-4 text-[#d4af37]/30 group-hover:text-[#d4af37] transition-colors">
                 <Icon className="h-10 w-10" />
               </div>
               <div className="space-y-2">
@@ -499,7 +499,7 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
                   <h3 className="text-zinc-200 font-display font-semibold text-sm">
                     {stat.label}
                   </h3>
-                  <p className="text-zinc-500 text-xs mt-1 leading-normal font-sans">
+                  <p className="text-zinc-400 text-xs mt-1 leading-normal font-sans">
                     {stat.desc}
                   </p>
                 </div>
@@ -510,23 +510,23 @@ export default function AboutSection({ onNavigateToProjects }: AboutSectionProps
       </div>
 
       {/* Short introduction paragraph with cards about her core vision */}
-      <section className="bg-zinc-950/20 rounded-2xl border border-zinc-800/40 p-6 md:p-8 space-y-6" id="mission-card">
+      <section className="bg-white/[0.06] backdrop-blur-md rounded-2xl border border-[#d4af37]/30 p-6 md:p-8 space-y-6" id="mission-card">
         <h2 className="font-display font-bold text-xl text-white flex items-center gap-2">
-          <Bot className="text-purple-400 h-5 w-5" />
+          <Bot className="text-[#e5c158] h-5 w-5" />
           Minha Proposta de Valor
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="border border-zinc-800/80 rounded-xl p-5 bg-zinc-900/40 space-y-2">
-            <span className="text-xs font-mono font-bold text-purple-500 tracking-wider uppercase">Foco Tecnológico</span>
+          <div className="border border-[#d4af37]/25 rounded-xl p-5 bg-white/[0.04] backdrop-blur-sm space-y-2">
+            <span className="text-xs font-mono font-bold text-[#e5c158] tracking-wider uppercase">Foco Tecnológico</span>
             <p className="text-white font-medium text-sm">Sistemas Autônomos e Chatbots</p>
-            <p className="text-zinc-400 text-xs leading-relaxed">
+            <p className="text-zinc-300 text-xs leading-relaxed">
               Desenvolvo automações inteligentes utilizando arquiteturas conversacionais refinadas. Através do Typebot integrado com LLMs personalizadas, crio consultores corporativos funcionais capazes de processar dados em tempo real o dia inteiro.
             </p>
           </div>
-          <div className="border border-zinc-800/80 rounded-xl p-5 bg-zinc-900/40 space-y-2">
-            <span className="text-xs font-mono font-bold text-emerald-500 tracking-wider uppercase">Pragmatismo de Negócios</span>
+          <div className="border border-[#d4af37]/25 rounded-xl p-5 bg-white/[0.04] backdrop-blur-sm space-y-2">
+            <span className="text-xs font-mono font-bold text-[#e5c158] tracking-wider uppercase">Pragmatismo de Negócios</span>
             <p className="text-white font-medium text-sm">Decisões e Inteligência Comercial</p>
-            <p className="text-zinc-400 text-xs leading-relaxed">
+            <p className="text-zinc-300 text-xs leading-relaxed">
               Unifico engenharia de software pura com análise de dados estratégica. Meus projetos (como VendaFácil e Macro Scenario Engine) não são apenas códigos no GitHub, são aceleradores que direcionam decisões econômicas complexas na B3.
             </p>
           </div>

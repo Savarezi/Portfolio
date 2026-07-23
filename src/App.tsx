@@ -89,9 +89,9 @@ export default function App() {
       />
 
       {/* 2. RESPONSIVE MOBILE NAVIGATION HEADER */}
-      <header className="md:hidden flex items-center justify-between w-full h-16 bg-[#0b0f19] px-6 border-b border-zinc-800 fixed top-0 z-40" id="mobile-navigation-bar">
+      <header className="md:hidden flex items-center justify-between w-full h-16 bg-white/[0.08] backdrop-blur-xl px-6 border-b border-[#d4af37]/35 fixed top-0 z-40" id="mobile-navigation-bar">
         <div className="flex items-center gap-2.5">
-          <div className="h-8 w-8 rounded-lg bg-purple-600 flex items-center justify-center font-display font-bold text-white text-sm shadow-[0_0_10px_rgba(168,85,247,0.4)]">
+          <div className="h-8 w-8 rounded-lg bg-[#d4af37] flex items-center justify-center font-display font-bold text-black text-sm shadow-[0_0_10px_rgba(212,175,55,0.4)]">
             PO
           </div>
           <span className="font-display font-semibold text-white tracking-wide text-sm">{PERSONAL_INFO.name}</span>
@@ -100,16 +100,16 @@ export default function App() {
         <div className="flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="p-2 bg-zinc-900 rounded-lg text-amber-400 hover:bg-zinc-800 transition-colors cursor-pointer"
+            className="p-2 bg-white/10 rounded-lg text-[#e5c158] hover:bg-white/20 transition-colors cursor-pointer border border-[#d4af37]/30"
             title={theme === 'dark' ? 'Ativar Modo Claro' : 'Ativar Modo Escuro'}
             id="mobile-theme-toggle-btn"
           >
-            {theme === 'dark' ? <Sun className="h-4.5 w-4.5 text-amber-400" /> : <Moon className="h-4.5 w-4.5 text-zinc-400" />}
+            {theme === 'dark' ? <Sun className="h-4.5 w-4.5 text-[#e5c158]" /> : <Moon className="h-4.5 w-4.5 text-zinc-400" />}
           </button>
           <button 
             onClick={() => setMobileMenuOpen(true)}
             id="mobile-menu-trigger-btn"
-            className="text-zinc-400 hover:text-white p-1 cursor-pointer"
+            className="text-[#e5c158] hover:text-white p-1 cursor-pointer"
           >
             <Menu className="h-6 w-6" />
           </button>
@@ -124,16 +124,16 @@ export default function App() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-[#080b11] z-50 flex flex-col justify-between"
+            className="fixed inset-0 bg-[#050505]/95 backdrop-blur-2xl z-50 flex flex-col justify-between"
             id="mobile-drawer-overlay"
           >
             {/* Top Close Row */}
-            <div className="flex items-center justify-between px-6 h-16 border-b border-zinc-800">
+            <div className="flex items-center justify-between px-6 h-16 border-b border-[#d4af37]/30">
               <span className="font-display font-bold text-white text-sm">Navegação</span>
               <button 
                 onClick={() => setMobileMenuOpen(false)}
                 id="close-mobile-drawer-btn"
-                className="text-zinc-400 hover:text-white"
+                className="text-zinc-300 hover:text-white"
               >
                 <X className="h-6 w-6" />
               </button>
@@ -154,11 +154,11 @@ export default function App() {
                      }}
                      className={`flex items-center gap-4 px-5 py-4 rounded-xl text-base font-medium transition-all w-full cursor-pointer
                        ${isActive 
-                         ? 'bg-purple-950/40 text-purple-400 border border-purple-500/30' 
-                         : 'text-zinc-400 hover:text-white hover:bg-zinc-900/60'
+                         ? 'bg-white/10 text-[#e5c158] border border-[#d4af37]/40 shadow-[0_0_15px_rgba(212,175,55,0.15)]' 
+                         : 'text-zinc-300 hover:text-white hover:bg-white/[0.06]'
                        }`}
                    >
-                     <Icon className="h-5.5 w-5.5 flex-shrink-0" />
+                     <Icon className={`h-5.5 w-5.5 flex-shrink-0 ${isActive ? 'text-[#e5c158]' : 'text-zinc-400'}`} />
                      <span>{tab.label}</span>
                    </button>
                  );
@@ -167,9 +167,9 @@ export default function App() {
                <button
                  onClick={handleOpenRecruiterWidget}
                  id="mobile-nav-item-ia-recrutadora"
-                 className="flex items-center gap-4 px-5 py-4 rounded-xl text-base font-semibold text-emerald-400 hover:text-emerald-300 hover:bg-emerald-950/20 border border-dashed border-emerald-500/20 w-full transition-all cursor-pointer"
+                 className="flex items-center gap-4 px-5 py-4 rounded-xl text-base font-semibold text-[#e5c158] hover:bg-[#d4af37]/15 border border-dashed border-[#d4af37]/40 w-full transition-all cursor-pointer"
                >
-                 <Bot className="h-5.5 w-5.5 flex-shrink-0 text-emerald-400" />
+                 <Bot className="h-5.5 w-5.5 flex-shrink-0 text-[#e5c158]" />
                  <span>Entrevistar via IA (Patricia)</span>
                </button>
              </nav>

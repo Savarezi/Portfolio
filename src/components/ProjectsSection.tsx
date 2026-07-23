@@ -71,25 +71,25 @@ export default function ProjectsSection() {
   return (
     <div className="space-y-8 animate-fade-in" id="projects-section-container">
       {/* Header section */}
-      <div className="space-y-2 border-b border-zinc-800 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="space-y-2 border-b border-[#d4af37]/30 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <h2 className="font-display font-bold text-3xl text-white">
             Meus Projetos
           </h2>
-          <p className="text-zinc-400 font-sans text-sm">
+          <p className="text-zinc-300 font-sans text-sm">
             Uma seleção de trabalhos que combinam design sofisticado, inteligência artificial e alto valor corporativo.
           </p>
         </div>
         
         {/* Search Input bar */}
         <div className="relative w-full md:w-72">
-          <Search className="absolute left-3 top-3 h-4 w-4 text-zinc-500" />
+          <Search className="absolute left-3 top-3 h-4 w-4 text-[#e5c158]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Buscar por tag, nome..."
-            className="w-full bg-[#0b0f19] border border-zinc-800 rounded-xl pl-9 pr-4 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500 transition-colors font-sans"
+            className="w-full bg-white/10 backdrop-blur-md border border-[#d4af37]/35 rounded-xl pl-9 pr-4 py-2 text-sm text-white placeholder-zinc-400 focus:outline-none focus:border-[#d4af37] transition-colors font-sans"
           />
         </div>
       </div>
@@ -100,10 +100,10 @@ export default function ProjectsSection() {
           <button
             key={cat.id}
             onClick={() => setActiveCategory(cat.id as any)}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide uppercase transition-all duration-200 border
+            className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide uppercase transition-all duration-200 border cursor-pointer
               ${activeCategory === cat.id 
-                ? 'bg-purple-600 text-white border-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.3)]' 
-                : 'bg-[#0b0f19] text-zinc-400 border-zinc-800 hover:text-white hover:border-zinc-700'
+                ? 'bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-black border-[#d4af37] font-bold shadow-[0_0_15px_rgba(212,175,55,0.35)]' 
+                : 'bg-white/[0.06] backdrop-blur-md text-zinc-300 border-[#d4af37]/30 hover:text-white hover:border-[#d4af37]/60'
               }`}
           >
             {cat.label}
@@ -119,7 +119,7 @@ export default function ProjectsSection() {
             return (
               <div 
                 key={project.id}
-                className="backdrop-blur-md bg-[#0b0f19]/50 border border-[#1e293b] rounded-2xl overflow-hidden hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.25)] hover:scale-[1.015] transition-all duration-300 flex flex-col justify-between group"
+                className="backdrop-blur-xl bg-white/[0.07] border border-[#d4af37]/35 rounded-2xl overflow-hidden hover:border-[#d4af37]/65 hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] hover:scale-[1.015] transition-all duration-300 flex flex-col justify-between group"
                 id={`project-card-${project.id}`}
               >
                 {/* Project visual header banner */}
@@ -1487,8 +1487,8 @@ export default function ProjectsSection() {
                     <div className="flex items-center justify-between">
                       <span className={`px-2.5 py-1 text-[10px] font-bold font-mono uppercase tracking-widest rounded-lg border
                         ${isIa 
-                          ? 'bg-purple-950/20 text-purple-400 border-purple-500/20' 
-                          : 'bg-zinc-900 border-zinc-800 text-zinc-400'
+                          ? 'bg-[#d4af37]/15 text-[#e5c158] border-[#d4af37]/35' 
+                          : 'bg-white/10 border-[#d4af37]/25 text-zinc-300'
                         }`}
                       >
                         {project.category}
@@ -1500,7 +1500,7 @@ export default function ProjectsSection() {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-zinc-500 hover:text-white transition-colors"
+                          className="text-zinc-400 hover:text-[#e5c158] transition-colors"
                           title="Ver no GitHub"
                           id={`github-link-${project.id}`}
                         >
@@ -1511,10 +1511,10 @@ export default function ProjectsSection() {
 
                     {/* Title & description */}
                     <div className="space-y-1.5">
-                      <h3 className="font-display font-bold text-lg text-white group-hover:text-purple-400 transition-colors tracking-tight">
+                      <h3 className="font-display font-bold text-lg text-white group-hover:text-[#e5c158] transition-colors tracking-tight">
                         {project.title}
                       </h3>
-                      <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-sans line-clamp-4">
+                      <p className="text-zinc-300 text-xs md:text-sm leading-relaxed font-sans line-clamp-4">
                         {project.description}
                       </p>
                     </div>
@@ -1523,7 +1523,7 @@ export default function ProjectsSection() {
                   {/* Tags list */}
                   <div className="flex flex-wrap gap-1.5 pt-3">
                     {project.tags.map((tag, idx) => (
-                      <span key={idx} className="bg-zinc-950/80 border border-zinc-800 text-zinc-500 text-[10px] font-mono px-2 py-0.5 rounded-md">
+                      <span key={idx} className="bg-white/10 border border-[#d4af37]/25 text-zinc-300 text-[10px] font-mono px-2 py-0.5 rounded-md">
                         {tag}
                       </span>
                     ))}
@@ -1531,36 +1531,36 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Interactive Actions footer */}
-                <div className="p-4 bg-zinc-950/40 border-t border-zinc-900/60 flex items-center justify-between gap-2.5">
+                <div className="p-4 bg-white/[0.04] border-t border-[#d4af37]/25 flex items-center justify-between gap-2.5">
                   {project.chatbotUrl ? (
                     <button
                       onClick={() => handleOpenPreview(project.chatbotUrl!, project.title)}
                       id={`test-bot-btn-${project.id}`}
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-950/40 to-indigo-950/40 hover:from-purple-900/40 hover:to-indigo-900/40 border border-purple-500/30 text-purple-300 font-medium text-xs rounded-xl transition-all"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-[#d4af37] to-[#b8860b] hover:from-[#e5c158] hover:to-[#d4af37] text-black font-semibold text-xs rounded-xl shadow-[0_2px_12px_rgba(212,175,55,0.25)] transition-all cursor-pointer"
                     >
-                      <Bot className="h-3.5 w-3.5 text-purple-400" />
+                      <Bot className="h-3.5 w-3.5 text-black" />
                       <span>Testar Chatbot</span>
-                      <ArrowUpRight className="h-3 w-3" />
+                      <ArrowUpRight className="h-3 w-3 text-black" />
                     </button>
                   ) : project.liveUrl ? (
                     <button
                       onClick={() => handleOpenPreview(project.liveUrl!, project.title)}
                       id={`open-app-btn-${project.id}`}
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-300 hover:text-white font-medium text-xs rounded-xl transition-all"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-[#d4af37]/35 text-white font-medium text-xs rounded-xl transition-all cursor-pointer"
                     >
-                      <Eye className="h-3.5 w-3.5 text-purple-400" />
+                      <Eye className="h-3.5 w-3.5 text-[#e5c158]" />
                       <span>Visualizar Demo</span>
-                      <ArrowUpRight className="h-3 w-3" />
+                      <ArrowUpRight className="h-3 w-3 text-[#e5c158]" />
                     </button>
                   ) : (
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 text-xs rounded-xl transition-all"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-medium text-xs rounded-xl border border-[#d4af37]/30 transition-all"
                     >
                       <span>Ver Repositório</span>
-                      <ExternalLink className="h-3.5 w-3.5" />
+                      <ExternalLink className="h-3.5 w-3.5 text-[#e5c158]" />
                     </a>
                   )}
                 </div>

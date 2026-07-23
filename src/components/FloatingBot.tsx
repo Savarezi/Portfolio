@@ -23,7 +23,7 @@ export default function FloatingBot({ isOpen, setIsOpen }: FloatingBotProps) {
   }, [isOpen]);
 
   const triggerCelebration = () => {
-    const colors = ['#a855f7', '#10b981', '#e2e8f0', '#94a3b8'];
+    const colors = ['#d4af37', '#e5c158', '#ffffff', '#b8860b'];
     confetti({
       particleCount: 50,
       angle: 60,
@@ -77,12 +77,12 @@ export default function FloatingBot({ isOpen, setIsOpen }: FloatingBotProps) {
         <button
           onClick={() => setIsOpen(true)}
           id="floating-recruiting-trigger"
-          className={`flex items-center gap-2.5 px-5 py-3.5 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-2xl shadow-[0_4px_30px_rgba(168,85,247,0.4)] hover:shadow-[0_4px_35px_rgba(168,85,247,0.6)] hover:scale-105 active:scale-95 transition-all outline-none group border border-purple-500/20
+          className={`flex items-center gap-2.5 px-5 py-3.5 bg-gradient-to-r from-[#d4af37] to-[#b8860b] hover:from-[#e5c158] hover:to-[#d4af37] text-black font-semibold rounded-2xl shadow-[0_4px_30px_rgba(212,175,55,0.4)] hover:shadow-[0_4px_35px_rgba(212,175,55,0.6)] hover:scale-105 active:scale-95 transition-all outline-none group border border-[#d4af37]/40 cursor-pointer
             ${pulsing ? 'animate-bounce' : ''}`}
         >
           <div className="relative">
-            <Bot className="h-5 w-5 animate-pulse text-white group-hover:rotate-12 transition-transform" />
-            <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-emerald-400 border border-purple-600" />
+            <Bot className="h-5 w-5 animate-pulse text-black group-hover:rotate-12 transition-transform" />
+            <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-emerald-400 border border-black" />
           </div>
           <span className="text-sm font-sans tracking-wide">Fale com a Patrícia (IA)</span>
         </button>
@@ -91,13 +91,13 @@ export default function FloatingBot({ isOpen, setIsOpen }: FloatingBotProps) {
       {/* Actual Chat Dialog Card */}
       {isOpen && (
         <div 
-          className="bg-[#080b11] border border-zinc-800 rounded-2xl shadow-2xl w-full max-w-sm h-[500px] flex flex-col overflow-hidden animate-fade-in"
+          className="bg-[#0a0a0d]/95 backdrop-blur-2xl border border-[#d4af37]/40 rounded-2xl shadow-2xl w-full max-w-sm h-[500px] flex flex-col overflow-hidden animate-fade-in"
           id="recruiter-chat-dialog-panel"
         >
           {/* Header */}
-          <div className="bg-[#0b0f19] border-b border-zinc-800 p-4 flex items-center justify-between flex-shrink-0">
+          <div className="bg-white/[0.08] backdrop-blur-xl border-b border-[#d4af37]/30 p-4 flex items-center justify-between flex-shrink-0">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 bg-purple-600/10 text-purple-400 rounded-xl relative">
+              <div className="p-2 bg-[#d4af37]/15 text-[#e5c158] rounded-xl relative border border-[#d4af37]/30">
                 <Bot className="h-5 w-5" />
                 <span className="absolute bottom-0 right-0 h-1.5 w-1.5 rounded-full bg-emerald-400" />
               </div>
@@ -105,24 +105,24 @@ export default function FloatingBot({ isOpen, setIsOpen }: FloatingBotProps) {
                 <h3 className="font-display font-semibold text-white text-xs leading-none">
                   IA Recrutadora Patrícia
                 </h3>
-                <span className="text-[10px] text-zinc-500 font-mono">Conectado</span>
+                <span className="text-[10px] text-zinc-400 font-mono">Conectado</span>
               </div>
             </div>
 
             <div className="flex items-center gap-1.5">
               <button
                 onClick={triggerCelebration}
-                className="p-1 px-2 flex items-center gap-1.5 bg-purple-950/40 hover:bg-purple-900/40 text-purple-400 hover:text-purple-300 rounded-lg text-[10px] font-bold border border-purple-500/20 cursor-pointer transition-all active:scale-95"
+                className="p-1 px-2 flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-[#e5c158] rounded-lg text-[10px] font-bold border border-[#d4af37]/30 cursor-pointer transition-all active:scale-95"
                 title="Comemorar Sucesso na Entrevista! 🏆"
                 id="floating-celebrate-sucess-btn"
               >
-                <Trophy className="h-3 w-3 text-amber-400 animate-pulse" />
+                <Trophy className="h-3 w-3 text-[#e5c158] animate-pulse" />
                 <span>Celebrar!</span>
               </button>
 
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded transition-colors cursor-pointer"
+                className="p-1 text-zinc-400 hover:text-white hover:bg-white/10 rounded transition-colors cursor-pointer"
                 id="close-chat-widget-btn"
                 title="Minimizar"
               >
