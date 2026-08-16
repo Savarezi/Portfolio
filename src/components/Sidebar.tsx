@@ -24,7 +24,6 @@ interface SidebarProps {
   setActiveTab: (tab: string) => void;
   collapsed: boolean;
   setCollapsed: (collapsed: boolean) => void;
-  onOpenRecruiterBot: () => void;
   theme: 'dark' | 'light';
   toggleTheme: () => void;
 }
@@ -34,7 +33,6 @@ export default function Sidebar({
   setActiveTab, 
   collapsed, 
   setCollapsed,
-  onOpenRecruiterBot,
   theme,
   toggleTheme
 }: SidebarProps) {
@@ -95,16 +93,6 @@ export default function Sidebar({
             </button>
           );
         })}
-
-        {/* Special Button for IA Recrutadora in Sidebar as well to ensure accessibility */}
-        <button
-          onClick={onOpenRecruiterBot}
-          id="nav-item-ia-recrutadora"
-          className="w-full flex items-center gap-4 px-4 py-3.5 rounded-xl font-medium text-[#e5c158] hover:bg-[#d4af37]/15 border border-dashed border-[#d4af37]/40 transition-all group duration-200 cursor-pointer"
-        >
-          <Bot className="h-5 w-5 flex-shrink-0 text-[#e5c158] group-hover:scale-110" />
-          {!collapsed && <span className="text-sm font-sans tracking-wide whitespace-nowrap">Entrevistar via IA</span>}
-        </button>
       </nav>
 
       {/* Footer Contact & Action Blocks */}

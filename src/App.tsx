@@ -21,7 +21,6 @@ import ExperienceSection from './components/ExperienceSection';
 import ProjectsSection from './components/ProjectsSection';
 import SkillsSection from './components/SkillsSection';
 import EducationSection from './components/EducationSection';
-import FloatingBot from './components/FloatingBot';
 import StarfieldBackground from './components/StarfieldBackground';
 import DossierSection from './components/DossierSection';
 import { PERSONAL_INFO } from './data';
@@ -31,16 +30,10 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('sobre');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [recruiterWidgetOpen, setRecruiterWidgetOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-  };
-
-  const handleOpenRecruiterWidget = () => {
-    setRecruiterWidgetOpen(true);
-    setMobileMenuOpen(false); // Close mobile menus if any
   };
 
   const renderActiveSection = () => {
@@ -83,7 +76,6 @@ export default function App() {
         setActiveTab={setActiveTab} 
         collapsed={sidebarCollapsed} 
         setCollapsed={setSidebarCollapsed}
-        onOpenRecruiterBot={handleOpenRecruiterWidget}
         theme={theme}
         toggleTheme={toggleTheme}
       />
@@ -163,15 +155,6 @@ export default function App() {
                    </button>
                  );
                })}
- 
-               <button
-                 onClick={handleOpenRecruiterWidget}
-                 id="mobile-nav-item-ia-recrutadora"
-                 className="flex items-center gap-4 px-5 py-4 rounded-xl text-base font-semibold text-[#e5c158] hover:bg-[#d4af37]/15 border border-dashed border-[#d4af37]/40 w-full transition-all cursor-pointer"
-               >
-                 <Bot className="h-5.5 w-5.5 flex-shrink-0 text-[#e5c158]" />
-                 <span>Entrevistar via IA (Patricia)</span>
-               </button>
              </nav>
 
             {/* Footer row contacts inside mobile dropdown */}
@@ -236,9 +219,6 @@ export default function App() {
           </p>
         </footer>
       </main>
-
-      {/* FLOATING CORNER INTERACTIVE RECRUITING ASSISTANT CHATBOT */}
-      <FloatingBot isOpen={recruiterWidgetOpen} setIsOpen={setRecruiterWidgetOpen} />
       
     </div>
   );
