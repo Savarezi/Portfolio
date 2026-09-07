@@ -184,6 +184,24 @@ export const EDUCATION_CERTS: EducationCertification[] = [
     type: 'academic'
   },
   {
+    title: 'Formação em Desenvolvimento Protheus (ADVPL)',
+    institution: 'TOTVS / Start+',
+    year: '2025',
+    type: 'certification',
+    description: 'Desenvolvimento em ADVPL, Protheus, lógica de programação, Git, GitHub, Harbour, modelagem de dados, CRUD, projeto prático (TCC) e desenvolvimento de soluções ERP.',
+    topics: [
+      'Desenvolvimento em ADVPL',
+      'Protheus',
+      'Lógica de Programação',
+      'Git & GitHub',
+      'Harbour',
+      'Modelagem de Dados',
+      'CRUD',
+      'Projeto Prático (TCC)',
+      'Desenvolvimento de Soluções ERP'
+    ]
+  },
+  {
     title: 'Mercado Eletrônico | DiverseDEV 2025 (360h)',
     institution: 'Ada Tech',
     year: 'Fevereiro de 2026',
@@ -257,6 +275,6 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     title: 'Desenvolvimento',
     iconName: 'Shield',
-    skills: ['React', 'TypeScript', 'JavaScript (ES6+)', 'Desenvolvimento SPA', 'Python', 'C# (Fundamentos)', 'Git & GitHub']
+    skills: ['ADVPL (Protheus ERP)', 'React', 'TypeScript', 'JavaScript (ES6+)', 'Desenvolvimento SPA', 'Python', 'C# (Fundamentos)', 'Git & GitHub']
   }
 ];

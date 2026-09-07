@@ -24,6 +24,8 @@ export interface EducationCertification {
   year: string;
   type: 'academic' | 'certification';
   credentialUrl?: string;
+  description?: string;
+  topics?: string[];
 }
 
 export interface SkillCategory {

@@ -72,6 +72,7 @@ EXPERIÊNCIA PROFISSIONAL:
 
 CERTIFICAÇÕES E FORMAÇÕES:
 - Análise e Desenvolvimento de Sistemas (2º Semestre) - Superior Tecnólogo (Fevereiro de 2026 - Em Andamento)
+- Formação em Desenvolvimento Protheus (ADVPL) - TOTVS / Start+: Desenvolvimento em ADVPL, Protheus, lógica de programação, Git, GitHub, Harbour, modelagem de dados, CRUD, projeto prático (TCC) e desenvolvimento de soluções ERP.
 - Formação em Desenvolvimento de Soluções Digitais e Automação (360 horas) - Mercado Eletrônico | DiverseDEV 2025 | Ada Tech (Concluido em Fevereiro de 2026) - n8n, Supabase, Lovable, lógica de programação e banco de dados.
 - Bootcamp Santander 2025 – Automação com n8n - Santander Open Academy (Foco em IA, automação e orquestração de APIs)
 - Formação em Tecnologia da Informação (360h) - Escola da Nuvem (Nuvem AWS, Python, Linux, IA aplicada)
@@ -112,7 +113,7 @@ Diretrizes de formatação e conteúdo:
 `;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: `Gere um currículo sofisticado e otimizado com base na seguinte solicitação de customização: "${userPrompt}". ${targetFocus}`,
       config: {
         systemInstruction,
@@ -128,45 +129,164 @@ Diretrizes de formatação e conteúdo:
   }
 });
 
-// Mock or intelligent chatbot API for answering recruiter questions about Patricia
-app.post("/api/recruiter-chat", async (req, res) => {
+// Intelligent chatbot API for answering questions about Patricia's portfolio, GitHub, and projects
+app.post("/api/duvidas-chat", async (req, res) => {
   const { message, chatHistory } = req.body;
+  
+  if (!message || typeof message !== 'string') {
+    return res.status(400).json({ success: false, error: "Mensagem é obrigatória." });
+  }
+
   try {
     const ai = getGeminiClient();
     const systemInstruction = `
-Você é a Assistente Virtual de Recrutamento de Patrícia Oliveira, simulando de forma extremamente empática, cordial e inteligente as habilidades dela.
-Sua meta é responder perguntas de recrutadores sobre a Patrícia com base nos dados reais dela fornecidos:
+Você é a Assistente Inteligente de Dúvidas do Portfólio de Patrícia Oliveira.
+Sua missão é responder com precisão, cordialidade e profundidade a qualquer pergunta que o visitante, recrutador ou cliente fizer sobre o portfólio, projetos, GitHub, tecnologias, carreira e experiências da Patrícia Oliveira.
 
-${PATRICIA_CV_CONTEXT}
+=======================================================
+FONTE DE VERDADE ABSOLUTA SOBRE PATRÍCIA OLIVEIRA:
+=======================================================
+Nome: Patrícia Oliveira
+Título/Especialidade: Analista de Dados, Desenvolvedora & Analista de Automação (Especialista em n8n)
+Email: patriciasavarezioliveira@gmail.com
+WhatsApp/Telefone: (11) 95806-0387
+Localização: São Paulo - Zona Leste - SP
+LinkedIn: https://www.linkedin.com/in/savarezi/
+GitHub Principal: https://github.com/Savarezi (Perfil: @Savarezi)
 
-Tom de voz:
-- Profissional, entusiasmado, prestativo e humilde, mas extremamente confiante.
-- Sempre responda em português com boa formatação (use negritos leves para facilitar a leitura).
-- Caso perguntem por algo que ela não possui ou não sabe, seja honesto(a) e mostre que ela é uma profissional com rápida curva de aprendizado (aprendeu AWS, IA e Typebot em curtos períodos, desenvolvendo projetos funcionais excelentes).
+RESUMO PROFISSIONAL:
+Profissional em formação em Análise e Desenvolvimento de Sistemas com sólida competência prática e especialização em n8n, análise de dados, automação inteligente de processos, computação em nuvem (AWS) e Engenharia de Prompt aplicada. Foco em eficiência operacional, orquestração de workflows complexos e tomadas de decisão orientadas a dados.
 
-Seja conciso, as respostas devem ter no máximo 2 ou 3 parágrafos explicativos.
+REPOSITÓRIOS E PROJETOS COMPLETOS (GITHUB & DEMOS):
+1. IA Reports & Porsche Sales Dashboard:
+   - GitHub: https://github.com/Savarezi/IA-Reports-com-Excel-GPT-Agents-e-Claude-Code
+   - Live Demo: https://porschesalesdashboard.netlify.app/
+   - Descrição: Fluxos inteligentes integrando Excel, agentes GPT e Claude Code para sanitização, análise exploratória e dashboards de vendas de alto luxo.
+   - Tags: GPT Agents, Claude Code, Excel, Data Analytics, Dashboards
+
+2. Jornada DEV - Start+ TOTVS:
+   - GitHub: https://github.com/Savarezi/Jornada-DEV
+   - Descrição: Repositório com estudos e projetos no programa Start+ da TOTVS: Lógica de Programação, Desenvolvimento de Sistemas, Protheus, ADVPL e Orientação a Objetos.
+
+3. Mentoria Tech / Hub:
+   - GitHub: https://github.com/Savarezi/Mentoria-Tech
+   - Chatbot Demo: https://typebot.co/mentoria-hub-jy978rh
+   - Descrição: Solução automatizada e inteligente voltada para desenvolvimento de carreira em tech, recomendando trilhas de estudo e direcionamento.
+   - Tags: Inteligência Artificial, Typebot, GPT-4, Python
+
+4. Macro Scenario Engine:
+   - GitHub: https://github.com/Savarezi/macro-scenario-engine
+   - Chatbot Demo: https://typebot.co/macro-scenario-engine-ayae11f
+   - Descrição: Motor de Análise Macroeconômica baseado em IA para interpretar cenários econômicos e sugerir tomadas de decisão para investimentos na B3 (Bolsa Brasileira).
+
+5. Planej.ai:
+   - GitHub: https://github.com/Savarezi/PlanejAI
+   - Live Demo: https://planejaai.netlify.app/
+   - Descrição: Plataforma interativa de planejamento financeiro pessoal aplicando a regra orçamentária 50-30-20.
+   - Tags: React, JavaScript, Tailwind CSS
+
+6. VendaFácil:
+   - GitHub: https://github.com/Savarezi/VendaFacil
+   - Descrição: Plataforma SaaS corporativa para micro e pequenas empresas unificando operações comerciais, financeiras e logísticas.
+
+7. Venda-Insights:
+   - GitHub: https://github.com/Savarezi/Venda-Insights
+   - Descrição: Exploração e análise de dados reais de vendas em Python com Pandas e Matplotlib para inteligência comercial.
+
+8. Clima São Paulo:
+   - GitHub: https://github.com/Savarezi/Clima
+   - Descrição: Coleta histórica e visualização interativa de dados meteorológicos de São Paulo via API Open-Meteo em Python.
+
+9. AWS Cloud Practitioner Portfolio:
+   - GitHub: https://github.com/Savarezi/aws-restart-cloud-practitioner
+   - Descrição: Laboratórios práticos de computação em nuvem AWS (EC2, S3, RDS, VPC, IAM, Segurança) desenvolvidos durante o programa AWS re/Start.
+
+10. Análise Financeira: Consultoria de Investimentos (Bovespa):
+    - GitHub: https://github.com/Savarezi/Analise-Financeiro
+    - Descrição: Análise detalhada do Índice Bovespa com análise exploratória de dados e visualizações no Tableau para investidores.
+
+11. Sistema de Gerenciamento de Biblioteca:
+    - GitHub: https://github.com/Savarezi/Sistema-de-Biblioteca
+    - Descrição: Sistema completo em HTML5, CSS3 e JavaScript Vanilla para controle de acervo e empréstimos sem recarregar a página.
+
+12. Moda Versátil - E-Commerce:
+    - GitHub: https://github.com/Savarezi/Moda-Versartil
+    - Live Demo: https://modaversatil.netlify.app/
+    - Descrição: E-commerce interativo de alta costura desenvolvido em React e Tailwind CSS com foco em UX/UI moderno.
+
+13. Simulador de Empréstimo:
+    - Chatbot Demo: https://typebot.co/simulador-de-atendimento-ue57nx5
+    - Descrição: Atendimento conversacional simulando esteira de contratação e taxas de crédito.
+
+EXPERIÊNCIA PROFISSIONAL:
+- Analista de Relacionamento (YOU.BPOTECH): Diagnóstico de problemas complexos em sistemas, mapeamento de requisitos, análise de métricas de engajamento e melhoria de fluxos operacionais.
+- Atendimento & Suporte Técnico - Voluntária (Descomplica SP): Suporte direto ao cidadão, autenticação e triagem de chamados em múltiplos sistemas integrados.
+- Central de Relacionamento (AC Camargo Cancer Center): Governança cadastral em conformidade, monitoramento de rotinas via CRM Salesforce e Plusoft.
+- Consultora de Vendas (TMKT): Análise diária de indicadores-chave (KPIs), conversão de vendas e acompanhamento de metas baseado em dados.
+
+FORMAÇÃO & CERTIFICAÇÕES:
+- Análise e Desenvolvimento de Sistemas (2º Semestre - Em Andamento) - Ensino Superior Tecnológico
+- Formação em Desenvolvimento Protheus (ADVPL) - TOTVS / Start+: Desenvolvimento em ADVPL, Protheus, lógica de programação, Git, GitHub, Harbour, modelagem de dados, CRUD, projeto prático (TCC) e desenvolvimento de soluções ERP.
+- Mercado Eletrônico | DiverseDEV 2025 (360h) - Ada Tech (n8n, Supabase, Lovable, lógica de programação e banco de dados)
+- AI React Front-end (2025) - Santander Open Academy
+- Microsoft Forms (2025) - Microsoft
+- Bootcamp Santander 2025 – Automação com n8n - Santander Open Academy
+- Formação em TI (360h - 2024) - Escola da Nuvem (AWS, Python, Linux)
+- SQL com PostgreSQL (2024) - Udemy
+- Bootcamp Análise de Dados com Python (360h - 2024) - Reprograma
+- Excel para Análise de Dados - Nota 10 (2023) - Preditiva Analytics
+
+STACK TECNOLÓGICA:
+- Automação: n8n, Workflows Orchestration, Typebot, Supabase, Lovable, APIs REST.
+- Desenvolvimento & ERP: ADVPL, Protheus (TOTVS), Harbour, CRUD, Modelagem de Dados, React, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Git & GitHub.
+- Dados: Python (Pandas, Matplotlib), SQL (PostgreSQL), Excel Avançado com Dashboards, Tableau, EDA.
+- Nuvem: AWS (EC2, S3, RDS, Lambda, VPC, IAM, Route 53, WAF), Linux.
+- Inteligência Artificial: Engenharia de Prompt, Aplicação de LLMs, Claude Code, GPT Agents, AWS AI.
+
+=======================================================
+DIRETRIZES DE RESPOSTA DO CHATBOT:
+=======================================================
+1. Responda em Português do Brasil de forma acolhedora, objetiva e muito profissional.
+2. Quando a pergunta for sobre um projeto ou código, explique detalhadamente como o projeto funciona e inclua o link do repositório correspondente no GitHub (por exemplo: [Ver no GitHub](url)) e o link da demo se houver.
+3. Se o usuário perguntar o GitHub geral dela, forneça: https://github.com/Savarezi.
+4. Se perguntarem sobre formas de contato ou contratação, forneça o email (patriciasavarezioliveira@gmail.com), WhatsApp ((11) 95806-0387) e LinkedIn (https://www.linkedin.com/in/savarezi/).
+5. Formate as respostas com Markdown bem estruturado (negrito, tópicos e links limpos) para que a leitura fique agradável no chat.
+6. Mantenha respostas concisas, informativas e ricas em contexto (geralmente entre 1 a 3 parágrafos ou lista de tópicos).
 `;
 
-    // Process messaging history inside chat system or basic prompt integration
-    const formattedHistory = chatHistory && Array.isArray(chatHistory) 
-      ? chatHistory.map((ch: any) => `${ch.role === 'user' ? 'Recrutador' : 'Assistente'}: ${ch.content}`).join("\n")
-      : "";
-
-    const userQuery = `${formattedHistory}\nRecrutador: ${message}\nAssistente:`;
+    // Format chat history for context
+    const contents: any[] = [];
+    if (chatHistory && Array.isArray(chatHistory)) {
+      for (const item of chatHistory) {
+        if (item.role === 'user') {
+          contents.push({ role: 'user', parts: [{ text: item.content }] });
+        } else if (item.role === 'assistant' || item.role === 'model') {
+          contents.push({ role: 'model', parts: [{ text: item.content }] });
+        }
+      }
+    }
+    
+    // Add current query
+    contents.push({ role: 'user', parts: [{ text: message }] });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
-      contents: userQuery,
+      model: "gemini-3.7-flash",
+      contents,
       config: {
         systemInstruction,
         temperature: 0.6,
       }
     });
 
-    res.json({ success: true, reply: response.text });
+    const reply = response.text || "Desculpe, não consegui processar a resposta no momento. Você pode entrar em contato diretamente com a Patrícia pelo email patriciasavarezioliveira@gmail.com ou WhatsApp (11) 95806-0387.";
+    res.json({ success: true, reply });
   } catch (error: any) {
-    console.error("Recruiter Chat Error:", error);
-    res.status(500).json({ success: false, error: error.message });
+    console.error("Dúvidas Chat Error:", error);
+    res.status(500).json({ 
+      success: false, 
+      error: error.message || "Erro no processamento da mensagem.",
+      reply: "Desculpe, ocorreu uma instabilidade momentânea na conexão. Você pode consultar os projetos diretamente no GitHub de Patrícia em https://github.com/Savarezi ou entrar em contato pelo email patriciasavarezioliveira@gmail.com."
+    });
   }
 });
 
@@ -220,7 +340,7 @@ Você DEVE responder estritamente em formato JSON válido seguindo exatamente es
     const userPrompt = `Analise a compatibilidade técnica da Patrícia para a vaga de: "${jobTitle}" com os seguintes detalhes/requisitos: "${jobDescription || 'Não informados'}".`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: userPrompt,
       config: {
         systemInstruction,

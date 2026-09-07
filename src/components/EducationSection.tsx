@@ -47,6 +47,24 @@ export default function EducationSection() {
                     <p className="text-zinc-300 text-sm font-sans">
                       {cert.institution}
                     </p>
+                    {cert.description && (
+                      <div className="pt-2 text-zinc-300 text-xs font-sans leading-relaxed">
+                        <span className="text-[#e5c158] font-semibold">Conteúdos do curso: </span>
+                        {cert.description}
+                      </div>
+                    )}
+                    {cert.topics && cert.topics.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 pt-2.5">
+                        {cert.topics.map((topic, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="inline-flex items-center text-[11px] px-2 py-0.5 rounded-md bg-white/5 border border-[#d4af37]/20 text-zinc-300 font-sans group-hover:border-[#d4af37]/40 transition-colors"
+                          >
+                            {topic}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   {/* Year badge */}

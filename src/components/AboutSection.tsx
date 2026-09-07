@@ -81,6 +81,7 @@ Profissional altamente especializada na otimização de processos de negócios p
 
 ## CERTIFICAÇÕES E EDUCAÇÃO
 * **Ensino Superior**: Tecnologia em Análise e Desenvolvimento de Sistemas — *Em andamento (Fev/2026 - Conclusão estimada)*
+* **Formação em Desenvolvimento Protheus (ADVPL)** — *TOTVS / Start+ (Conteúdos: Desenvolvimento em ADVPL, Protheus, lógica de programação, Git, GitHub, Harbour, modelagem de dados, CRUD, projeto prático TCC e soluções ERP)*
 * **Formação em Desenvolvimento de Soluções Digitais e Automação (360h)** — *Ada Tech | Mercado Eletrônico (Concluído em Fevereiro de 2026)*
 * **Bootcamp Automação de Processos com n8n** — *Santander Open Academy (IA e Orquestração de APIs)*
 * **Formação em Tecnologia da Informação (360h)** — *Escola da Nuvem (Nuvem AWS, Python, Linux & Linux Server)*

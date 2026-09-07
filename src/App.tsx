@@ -23,6 +23,7 @@ import SkillsSection from './components/SkillsSection';
 import EducationSection from './components/EducationSection';
 import StarfieldBackground from './components/StarfieldBackground';
 import DossierSection from './components/DossierSection';
+import FloatingDuvidasBot from './components/FloatingDuvidasBot';
 import { PERSONAL_INFO } from './data';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -219,6 +220,9 @@ export default function App() {
           </p>
         </footer>
       </main>
+
+      {/* FLOATING CORNER "DÚVIDAS" CHATBOT */}
+      <FloatingDuvidasBot />
       
     </div>
   );
